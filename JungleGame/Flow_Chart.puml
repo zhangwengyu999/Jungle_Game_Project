@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Window -> Menu_Page: To Menu_Page
+activate Window
+activate Menu_Page
+Window -> Block: Initialize blocks
+activate Block
+autonumber 2
+Window -> Piece: Initialize pieces
+activate Piece
+Block --> Menu_Page: Return to Menu_Page
+deactivate Block
+autonumber 3
+Piece --> Menu_Page: Return to Menu_Page
+deactivate Piece
+Menu_Page -> InputBox: Input command
+deactivate Menu_Page
+activate InputBox
+InputBox -> InfoBox: Remind the input content
+activate InfoBox
+InfoBox --> InputBox: Get the Answer for input (Input again from process 4)
+deactivate InfoBox
+InputBox -> KeyboardListener: listen for the input content
+deactivate InputBox
+activate KeyboardListener
+KeyboardListener -> InputValidation: Check the input Validation
+activate InputValidation
+InputValidation --> KeyboardListener: Return right validation result
+autonumber 9
+InputValidation --> InputBox: Return wrong validation result (Input again from process 4)
+deactivate InputValidation
+KeyboardListener -> MainController: Run the controller for picking and moving pieces
+deactivate KeyboardListener
+activate MainController
+MainController -> Model: Judge the piece actions with rules
+deactivate MainController
+activate Model
+Model --> InfoBox: Return the successful actions for pieces
+autonumber 12
+Model --> Window: Update the latest pieces status
+deactivate Model
+Window -> Block: Update the gameBoard status
+autonumber 13
+Window -> Piece: Update the pieces status
+autonumber 13
+Window -> InfoBox: Return the overall result of the game if game is over
+activate InfoBox
+InfoBox --> Menu_Page: End the game and back to menu page (If start a new game, Input again from process 4)
+deactivate InfoBox
+activate Menu_Page
+
+
+
+
+@enduml

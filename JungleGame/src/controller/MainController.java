@@ -24,7 +24,7 @@ public class MainController {
         // ...
     }
 
-    public void UpdatePieceLocationType(Piece inPiece, Square inSquare){
+    public void UpdatePieceLocationType(){
         // ...
     }
 

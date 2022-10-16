@@ -1,5 +1,7 @@
 package view;
 
+import model.GameBoard;
+
 public class Window {
     private static final int width = 60;
     private static final int height = 80;
@@ -27,7 +29,7 @@ public class Window {
         inputBox.showInputBox();
     }
 
-    public void updateWindowFromGameBoard(char[][] inGameBoard){
+    public void updateWindowFromGameBoard(GameBoard inGameBoard) {
         // ...
     }
 

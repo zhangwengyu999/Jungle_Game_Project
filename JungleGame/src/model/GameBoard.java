@@ -1,6 +1,6 @@
 package model;
 
-public class GameBoard {
+public class GameBoard extends Judge {
     private final int WIDTH;
     private final int HEIGHT;
     private Square[][] squares;
@@ -20,5 +20,8 @@ public class GameBoard {
         return pieces;
     }
 
-
+    public char[][] getUpdate() {
+        // ...
+        return new char[HEIGHT][WIDTH];
+    }
 }
