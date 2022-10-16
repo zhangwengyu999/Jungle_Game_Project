@@ -43,6 +43,7 @@ public abstract class Piece {
     public void moveUp(int inStep){
         y+=inStep;
     }
+
     public void moveDown(int inStep){
         y-= inStep;
     }

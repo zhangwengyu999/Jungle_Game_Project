@@ -15,6 +15,8 @@ public class MainController {
 
 
     public void MovePiece(int inX, int inY, String inDirection){
+        char[] pickAndMoveInput = KeyboardListener.getPickAndMove();
+        boolean isValid = InputValidation.isPickAndMoveInputValid(pickAndMoveInput);
         // ...
     }
 
