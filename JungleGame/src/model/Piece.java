@@ -1,7 +1,5 @@
 package model;
 
-import javax.swing.*;
-
 public abstract class Piece {
     private String animalName;
     private int rank;
