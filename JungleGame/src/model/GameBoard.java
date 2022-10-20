@@ -14,10 +14,45 @@ public class GameBoard extends Judge {
         HEIGHT = 9;
         alivePieceOfPlayerA = 8;
         alivePieceOfPlayerB = 8;
+        initializeSquare();
+        initializePiece();
+    }
+
+    private initializeSquares() {
+        // ...
+    }
+
+    private initializePieces(){
+        Piece tigerA = new Tiger(true);
+        pieces[0][0] = tigerA;
+
+        Piece tigerB = new Tiger(true);
+        pieces[6][8] = tigerB;
+        //...
     }
 
     public Piece[][] getPiece(){
         return pieces;
+    }
+
+    public Piece getPieceFromXY(int inX, int inY) {
+        return pieces[inX][inY];
+    }
+
+    public void moveUp(int inX, int inY) {
+        // ...
+    }
+
+    public void moveDown(int inX, int inY) {
+        // ...
+    }
+
+    public void moveLeft(int inX, int inY) {
+        // ...
+    }
+
+    public void moveRight(int inX, int inY) {
+        // ...
     }
 
     public char[][] getUpdate() {

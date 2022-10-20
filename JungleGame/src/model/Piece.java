@@ -5,17 +5,13 @@ public abstract class Piece {
     private int rank;
     private boolean isAlive;
     private boolean isBelongToPlayerA;
-    private int x;
-    private int y;
     private String positionType;
 
-    public Piece(String inName, int inRank, boolean inIsBelongToPlayerA, int inX, int inY){
+    public Piece(String inName, int inRank, boolean inIsBelongToPlayerA){
         this.animalName = inName;
         this.isAlive = true;
         this.rank = inRank;
         this.isBelongToPlayerA = inIsBelongToPlayerA;
-        this.x = inX;
-        this.y = inY;
     }
 
     public boolean isAlive(){
@@ -30,28 +26,8 @@ public abstract class Piece {
         return rank;
     }
 
-    public int getX(){
-        return x;
-    }
-
-    public int getY(){
-        return y;
-    }
-
-    public void moveUp(int inStep){
-        y+=inStep;
-    }
-
-    public void moveDown(int inStep){
-        y-= inStep;
-    }
-
-    public void moveLeft(int inStep){
-        x-= inStep;
-    }
-
-    public void moveRight(int inStep){
-        x+= inStep;
+    public String getName(){
+        return inName;
     }
 
     public String getPositionType() {
