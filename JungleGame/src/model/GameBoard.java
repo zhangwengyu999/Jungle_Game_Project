@@ -14,15 +14,17 @@ public class GameBoard extends Judge {
         HEIGHT = 9;
         alivePieceOfPlayerA = 8;
         alivePieceOfPlayerB = 8;
-        initializeSquare();
-        initializePiece();
+        initializeSquares();
+        initializePieces();
     }
 
-    private initializeSquares() {
+    private void initializeSquares() {
         // ...
     }
 
-    private initializePieces(){
+    private void initializePieces(){
+
+        // Example:
         Piece tigerA = new Tiger(true);
         pieces[0][0] = tigerA;
 

@@ -27,7 +27,7 @@ public abstract class Piece {
     }
 
     public String getName(){
-        return inName;
+        return animalName;
     }
 
     public String getPositionType() {
