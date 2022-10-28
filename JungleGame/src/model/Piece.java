@@ -34,6 +34,11 @@ public abstract class Piece {
         return positionType;
     }
 
+    // New
+    public boolean getIsBelongToPlayerA(){
+        return isBelongToPlayerA;
+    }
+
     public void setPositionType(String inPositionType) {
         this.positionType = inPositionType;
     }

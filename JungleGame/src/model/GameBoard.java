@@ -1,6 +1,6 @@
 package model;
 
-public class GameBoard extends Judge {
+public class GameBoard {
     private final int WIDTH;
     private final int HEIGHT;
     private Square[][] squares;
@@ -33,12 +33,17 @@ public class GameBoard extends Judge {
         //...
     }
 
-    public Piece[][] getPiece(){
-        return pieces;
-    }
+//    public Piece[][] getPiece(){
+//        return pieces;
+//    }
 
     public Piece getPieceFromXY(int inX, int inY) {
         return pieces[inX][inY];
+    }
+
+    // new
+    public Square getSquareFromXY(int inX, int inY) {
+        return squares[inX][inY];
     }
 
     public void moveUp(int inX, int inY) {
@@ -54,6 +59,11 @@ public class GameBoard extends Judge {
     }
 
     public void moveRight(int inX, int inY) {
+        // ...
+    }
+
+    // new (先判断移动可行性，再判断能否吃，最后判断吃完的移动)
+    public void capturePiece(int inAX, int inAY, int inBX, int inBY) {
         // ...
     }
 

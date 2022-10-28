@@ -13,4 +13,9 @@ public class Square {
     public void setPiecePositionType(Piece inPiece, String inPositionType) {
         //...
     };
+
+    // new
+    public String getSquareType() {
+        return squareType;
+    }
 }
