@@ -128,7 +128,7 @@ class JudgeTest {
     }
 
     @Test
-    void isWinTestByInDen() {
+    void isWinTestByInDenTest() {
         assertFalse(judge.isWin(8,gameBoard.getPieceFromXY(0,0)));
         gameBoard.moveRight(2,2);
 
@@ -141,7 +141,7 @@ class JudgeTest {
     }
 
     @Test
-    void isWinTestByCaptureAll() { // 添加capture情况
+    void isWinTestByCaptureAllTest() {
         assertTrue(judge.isWin(0,gameBoard.getPieceFromXY(0,0)));
         assertFalse(judge.isWin(8,gameBoard.getPieceFromXY(0,0)));
     }

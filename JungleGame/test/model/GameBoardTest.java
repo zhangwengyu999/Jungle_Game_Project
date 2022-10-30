@@ -369,7 +369,7 @@ class GameBoardTest {
     }
 
     @Test
-    void specialMove(){
+    void specialMoveTest(){
 
         // Test for Lion Move over Water vertically
         gameBoard.moveLeft(5,1); // Move the Dog to the left
