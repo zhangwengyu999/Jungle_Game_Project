@@ -33,9 +33,9 @@ public class GameBoard {
         //...
     }
 
-//    public Piece[][] getPiece(){
-//        return pieces;
-//    }
+    public Piece[][] getPiece(){
+        return pieces;
+    }
 
     public Piece getPieceFromXY(int inX, int inY) {
         return pieces[inX][inY];
@@ -67,8 +67,18 @@ public class GameBoard {
         // ...
     }
 
-    public char[][] getUpdate() {
+    // new
+    public int getAlivePieceOfPlayerA() {
+        return alivePieceOfPlayerA;
+    }
+
+    // new
+    public int getAlivePieceOfPlayerB() {
+        return alivePieceOfPlayerB;
+    }
+
+    public String[][] getUpdate() {
         // ...
-        return new char[HEIGHT][WIDTH];
+        return new String[HEIGHT][WIDTH];
     }
 }

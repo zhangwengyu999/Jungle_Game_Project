@@ -3,6 +3,7 @@ package model;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SquareTest {
     private Square generalLandSquare;
@@ -44,6 +45,7 @@ class SquareTest {
         generalLandSquare = new Square("generalLand",1,1);
         Piece tigerA = new Tiger(true);
         generalLandSquare.setPiecePositionType(tigerA, "generalLand");
+        assertEquals("generalLand",tigerA.getPositionType());
         assertEquals("generalLand", generalLandSquare.getSquareType());
         assertNotEquals("water", generalLandSquare.getSquareType());
         assertNotEquals("hku", generalLandSquare.getSquareType());

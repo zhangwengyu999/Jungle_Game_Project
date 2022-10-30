@@ -11,6 +11,7 @@ public class Square {
         this.y = inY;
     }
     public void setPiecePositionType(Piece inPiece, String inPositionType) {
+        inPiece.setPositionType(inPositionType);
         //...
     };
 
