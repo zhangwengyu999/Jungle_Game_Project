@@ -6,17 +6,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JudgeTest {
+    // prepare the GameBoard and Judge for the test
     private GameBoard gameBoard;
     private Judge judge;
 
     @BeforeEach
     void setUp() {
+        // set up the GameBoard and Judge for the test
         gameBoard = new GameBoard();
         judge = new Judge();
     }
 
     @Test
     void isLegalMovementTest() {
+        // Tests for the legal movement of the pieces
+
         // Test for out of the GameBoard boundary
         assertFalse(judge.isLegalMovement(0, 0, "L"));
         assertFalse(judge.isLegalMovement(0,0,"D"));
@@ -84,6 +88,8 @@ class JudgeTest {
 
     @Test
     void isAAliveAfterCaptureTest() {
+        // Tests for is Piece A alive after capturing Piece B
+
         // Normal capture
         gameBoard.moveRight(2,2);
         gameBoard.moveUp(3,2);
@@ -129,6 +135,8 @@ class JudgeTest {
 
     @Test
     void isWinTestByInDenTest() {
+        // Test for win by entering the opponent's Den
+
         assertFalse(judge.isWin(8,gameBoard.getPieceFromXY(0,0)));
         gameBoard.moveRight(2,2);
 
@@ -142,6 +150,8 @@ class JudgeTest {
 
     @Test
     void isWinTestByCaptureAllTest() {
+        // Test for win by capturing all the pieces of the opponent
+
         assertTrue(judge.isWin(0,gameBoard.getPieceFromXY(0,0)));
         assertFalse(judge.isWin(8,gameBoard.getPieceFromXY(0,0)));
     }

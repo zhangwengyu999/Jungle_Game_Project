@@ -8,10 +8,12 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameBoardTest {
+    // Prepare the GameBoard
     private GameBoard gameBoard;
 
     @BeforeEach
     void setUp() {
+        // Set up the GameBoard
         gameBoard = new GameBoard();
     }
 
@@ -19,7 +21,7 @@ class GameBoardTest {
     @Test
     void pieceInitialPositionTest() {
 
-        // test for initial amount of piece of two players
+        // Test for initial amount of piece of two players
         assertEquals(gameBoard.getAlivePieceOfPlayerA(),8);
         assertEquals(gameBoard.getAlivePieceOfPlayerB(),8);
 
@@ -41,7 +43,7 @@ class GameBoardTest {
         assertEquals(playerAInitialPiece,8);
         assertEquals(playerBInitialPiece,8);
 
-        // test for initial position of piece of two players
+        // Test for initial position of piece of two players
         Piece pieceT1 = gameBoard.getPieceFromXY(0, 0);
         Piece pieceT2 = gameBoard.getPieceFromXY(6, 8);
         assertEquals("Tiger", pieceT1.getName());
@@ -102,7 +104,7 @@ class GameBoardTest {
     @Test
     void squarePositionTest() {
 
-        // Test for general land
+        // Test for general land square position
         for(int i = 0; i< 9; i++) {
             Square squareTest = gameBoard.getSquareFromXY(0, i);
             assertEquals("generaLand", squareTest.getSquareType());
@@ -196,7 +198,7 @@ class GameBoardTest {
         Square square112 = gameBoard.getSquareFromXY(4,7);
         assertEquals("generalLand", square112.getSquareType());
 
-        // test for den square
+        // Test for den square position
         Square square20 = gameBoard.getSquareFromXY(2,0);
         Square square21 = gameBoard.getSquareFromXY(4,0);
         Square square22 = gameBoard.getSquareFromXY(3,1);
@@ -210,7 +212,7 @@ class GameBoardTest {
         assertNotEquals("den", square22.getSquareType());
         assertNotEquals("generalLand", square22.getSquareType());
 
-        // test for trap square
+        // Test for trap square position
         Square square23 = gameBoard.getSquareFromXY(2,8);
         Square square24 = gameBoard.getSquareFromXY(4,8);
         Square square25 = gameBoard.getSquareFromXY(3,7);
@@ -231,7 +233,7 @@ class GameBoardTest {
         assertEquals("den", square31.getSquareType());
         assertNotEquals("trap", square31.getSquareType());
 
-        // test for water square
+        // Test for water square position
         for (int i=1;i<3;i++) {
             for (int j=3;j<6;j++) {
                 Square squareTest = gameBoard.getSquareFromXY(i,j);
@@ -250,19 +252,23 @@ class GameBoardTest {
 
     @Test
     void moveUpTest() {
-        String[][] expected = new String[][]{
+        // Test for moving up a piece(1,1) to (1,2)
+
+        // The original position of the piece
+        String[][] expectedOriginal = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
                                             {"RB","","PB","","WB","","EB"},
                                             {"","","","","","",""},
                                             {"","","","","","",""},
                                             {"","","","","","",""},
-                                            {"EA","CA","WA","","PA","","RA"},
-                                            {"","","","","","DA",""},
+                                            {"EA","","WA","","PA","","RA"},
+                                            {"","CA","","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        assertFalse(Arrays.equals(expected,gameBoard.getUpdate()));
+        assertArrayEquals(expectedOriginal, gameBoard.getUpdate());
 
+        // The expected position of the piece after moving up piece(1,1) to (1,2)
         String[][] expected2 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -274,13 +280,16 @@ class GameBoardTest {
                                             {"","","","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        gameBoard.moveUp(1,1);
+        gameBoard.moveUp(1,1); // moving up piece(1,1) to (1,2)
         assertArrayEquals(expected2, gameBoard.getUpdate());
     }
 
     @Test
     void moveDownTest() {
-        String[][] expected = new String[][]{
+        // Test for moving down a piece(1,1) to (1,0)
+
+        // The original position of the piece
+        String[][] expectedOriginal = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
                                             {"RB","","PB","","WB","","EB"},
@@ -288,11 +297,12 @@ class GameBoardTest {
                                             {"","","","","","",""},
                                             {"","","","","","",""},
                                             {"EA","","WA","","PA","","RA"},
-                                            {"","","","","","DA",""},
-                                            {"TA","CA","","","","","LA"}
+                                            {"","CA","","","","DA",""},
+                                            {"TA","","","","","","LA"}
         };
-        assertFalse(Arrays.equals(expected,gameBoard.getUpdate()));
+        assertArrayEquals(expectedOriginal, gameBoard.getUpdate());
 
+        // The expected position of the piece after moving down piece(1,1) to (1,0)
         String[][] expected2 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -304,13 +314,16 @@ class GameBoardTest {
                                             {"","","","","","DA",""},
                                             {"TA","CA","","","","","LA"}
         };
-        gameBoard.moveUp(1,1);
+        gameBoard.moveDown(1,1); // moving down piece(1,1) to (1,0)
         assertArrayEquals(expected2, gameBoard.getUpdate());
     }
 
     @Test
     void moveLeftTest() {
-        String[][] expected = new String[][]{
+        // Test for moving left a piece(1,1) to (0,1)
+
+        // The original position of the piece
+        String[][] expectedOriginal = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
                                             {"RB","","PB","","WB","","EB"},
@@ -318,11 +331,12 @@ class GameBoardTest {
                                             {"","","","","","",""},
                                             {"","","","","","",""},
                                             {"EA","","WA","","PA","","RA"},
-                                            {"CA","","","","","DA",""},
+                                            {"","CA","","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        assertFalse(Arrays.equals(expected,gameBoard.getUpdate()));
+        assertArrayEquals(expectedOriginal, gameBoard.getUpdate());
 
+        // The expected position of the piece after moving left piece(1,1) to (0,1)
         String[][] expected2 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -334,13 +348,16 @@ class GameBoardTest {
                                             {"CA","","","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        gameBoard.moveUp(1,1);
+        gameBoard.moveLeft(1,1); // moving left piece(1,1) to (0,1)
         assertArrayEquals(expected2, gameBoard.getUpdate());
     }
 
     @Test
     void moveRightTest() {
-        String[][] expected = new String[][]{
+        // Test for moving right a piece(1,1) to (2,1)
+
+        // The original position of the piece
+        String[][] expectedOriginal = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
                                             {"RB","","PB","","WB","","EB"},
@@ -348,11 +365,12 @@ class GameBoardTest {
                                             {"","","","","","",""},
                                             {"","","","","","",""},
                                             {"EA","","WA","","PA","","RA"},
-                                            {"","","","CA","","DA",""},
+                                            {"","CA","","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        assertFalse(Arrays.equals(expected,gameBoard.getUpdate()));
+        assertArrayEquals(expectedOriginal, gameBoard.getUpdate());
 
+        // The expected position of the piece after moving right piece(1,1) to (2,1)
         String[][] expected2 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -364,7 +382,7 @@ class GameBoardTest {
                                             {"","","CA","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        gameBoard.moveUp(1,1);
+        gameBoard.moveRight(1,1); // moving right piece(1,1) to (2,1)
         assertArrayEquals(expected2, gameBoard.getUpdate());
     }
 
@@ -377,6 +395,8 @@ class GameBoardTest {
         gameBoard.moveUp(5,0); // Move the Lion up
         gameBoard.moveUp(5,1); // Move the Lion up
         gameBoard.moveUp(5,2); // Move the Lion up (should jump over the Water and land at (5,6))
+
+        // The wrong position of the Lion after moving up piece(5,2)
         String[][] expected = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -390,6 +410,7 @@ class GameBoardTest {
         };
         assertFalse(Arrays.equals(expected,gameBoard.getUpdate()));
 
+        // The correct position of the Lion after moving up piece(5,2) to (5,6)
         String[][] expected2 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -410,6 +431,8 @@ class GameBoardTest {
         gameBoard.moveUp(0,1); // Move the Tiger up
         gameBoard.moveUp(0,2); // Move the Tiger up
         gameBoard.moveRight(0,3);// Move the Tiger to the right (should jump over the Water and land at (3,3))
+
+        // The wrong position of the Tiger after moving right piece(0,3)
         String[][] expected3 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -423,6 +446,7 @@ class GameBoardTest {
         };
         assertFalse(Arrays.equals(expected3,gameBoard.getUpdate()));
 
+        // The correct position of the Tiger after moving right piece(0,3) to (3,3)
         String[][] expected4 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -438,7 +462,11 @@ class GameBoardTest {
 
         //Test for Rat get into the water
         gameBoard.moveUp(6,2);
+
+        // Move the Rat(6,3) to the left into the Water.
         gameBoard.moveLeft(6,3);
+
+        // Wrong position of the Rat after moving left piece(6,3)
         String[][] expected5 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -452,6 +480,7 @@ class GameBoardTest {
         };
         assertFalse(Arrays.equals(expected5,gameBoard.getUpdate()));
 
+        // Correct position of the Rat after moving left piece(6,3) to (6,2)
         String[][] expected6 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -464,12 +493,13 @@ class GameBoardTest {
                                             {"TA","","","","","","LA"}
         };
         assertArrayEquals(expected6, gameBoard.getUpdate());
-
     }
 
     @Test
     void getUpdateTest() {
-        String[][] expected = new String[][]{
+
+        // The correct original position of the pieces
+        String[][] expectedOriginal = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
                                             {"RB","","PB","","WB","","EB"},
@@ -480,9 +510,9 @@ class GameBoardTest {
                                             {"","CA","","","","DA",""},
                                             {"TA","","","","","","LA"}
                                             };
-        assertTrue(Arrays.equals(expected,gameBoard.getUpdate()));
+        assertTrue(Arrays.equals(expectedOriginal,gameBoard.getUpdate()));
 
-
+        // The wrong original position of the pieces
         String[][] expected2 = new String[][]{
                                             {"LB","","","","","","TB"},
                                             {"","DB","","","","CB",""},
@@ -513,7 +543,7 @@ class GameBoardTest {
                                             {"","CA","","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        assertTrue(Arrays.equals(expectedBeforeCapture,gameBoard.getUpdate()));
+        assertArrayEquals(expectedBeforeCapture, gameBoard.getUpdate());
 
         // Move WolfA(2,2) to (3,6) to capture the WolfB(4,6)
         gameBoard.moveRight(2,2);
@@ -534,7 +564,7 @@ class GameBoardTest {
                                             {"","CA","","","","DA",""},
                                             {"TA","","","","","","LA"}
         };
-        assertTrue(Arrays.equals(expectedAfterCapture,gameBoard.getUpdate()));
+        assertArrayEquals(expectedAfterCapture, gameBoard.getUpdate());
         assertEquals(gameBoard.getAlivePieceOfPlayerA(),8);
         assertEquals(gameBoard.getAlivePieceOfPlayerB(),7);
     }
