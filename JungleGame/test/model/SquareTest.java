@@ -54,6 +54,5 @@ class SquareTest {
         assertEquals("generalLand", generalLandSquare.getSquareType());
         assertNotEquals("water", generalLandSquare.getSquareType());
         assertNotEquals("hku", generalLandSquare.getSquareType());
-
     }
 }

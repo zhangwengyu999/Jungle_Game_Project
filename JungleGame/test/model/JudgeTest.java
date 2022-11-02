@@ -151,7 +151,6 @@ class JudgeTest {
     @Test
     void isWinTestByCaptureAllTest() {
         // Test for win by capturing all the pieces of the opponent
-
         assertTrue(judge.isWin(0,gameBoard.getPieceFromXY(0,0)));
         assertFalse(judge.isWin(8,gameBoard.getPieceFromXY(0,0)));
     }
