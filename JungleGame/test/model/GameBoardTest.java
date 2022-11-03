@@ -46,59 +46,59 @@ class GameBoardTest {
         // Test for initial position of piece of two players
         Piece pieceT1 = gameBoard.getPieceFromXY(0, 0);
         Piece pieceT2 = gameBoard.getPieceFromXY(6, 8);
-        assertEquals("Tiger", pieceT1.getName());
-        assertEquals("Tiger", pieceT2.getName());
-        assertNotEquals("Cat", pieceT1.getName());
-        assertNotEquals("Cat", pieceT2.getName());
+        assertEquals("TA", pieceT1.getName());
+        assertEquals("TB", pieceT2.getName());
+        assertNotEquals("CA", pieceT1.getName());
+        assertNotEquals("CB", pieceT2.getName());
 
         Piece pieceC1 = gameBoard.getPieceFromXY(1, 1);
         Piece pieceC2 = gameBoard.getPieceFromXY(5, 7);
-        assertEquals("Cat", pieceC1.getName());
-        assertEquals("Cat", pieceC2.getName());
-        assertNotEquals("Elephant", pieceC1.getName());
-        assertNotEquals("Elephant", pieceC2.getName());
+        assertEquals("CA", pieceC1.getName());
+        assertEquals("CB", pieceC2.getName());
+        assertNotEquals("EA", pieceC1.getName());
+        assertNotEquals("EB", pieceC2.getName());
 
         Piece pieceE1 = gameBoard.getPieceFromXY(0, 2);
         Piece pieceE2 = gameBoard.getPieceFromXY(6, 6);
-        assertEquals("Elephant", pieceE1.getName());
-        assertEquals("Elephant", pieceE2.getName());
-        assertNotEquals("Wolf", pieceE1.getName());
-        assertNotEquals("Wolf", pieceE2.getName());
+        assertEquals("EA", pieceE1.getName());
+        assertEquals("EB", pieceE2.getName());
+        assertNotEquals("WA", pieceE1.getName());
+        assertNotEquals("WB", pieceE2.getName());
 
         Piece pieceW1 = gameBoard.getPieceFromXY(2, 2);
         Piece pieceW2 = gameBoard.getPieceFromXY(4, 6);
-        assertEquals("Wolf", pieceW1.getName());
-        assertEquals("Wolf", pieceW2.getName());
-        assertNotEquals("Leopard", pieceW1.getName());
-        assertNotEquals("Leopard", pieceW2.getName());
+        assertEquals("WA", pieceW1.getName());
+        assertEquals("WB", pieceW2.getName());
+        assertNotEquals("PA", pieceW1.getName());
+        assertNotEquals("PB", pieceW2.getName());
 
         Piece pieceP1 = gameBoard.getPieceFromXY(4, 2);
         Piece pieceP2 = gameBoard.getPieceFromXY(2, 6);
-        assertEquals("Leopard", pieceP1.getName());
-        assertEquals("Leopard", pieceP2.getName());
-        assertNotEquals("Dog", pieceP1.getName());
-        assertNotEquals("Dog", pieceP2.getName());
+        assertEquals("PA", pieceP1.getName());
+        assertEquals("PB", pieceP2.getName());
+        assertNotEquals("DA", pieceP1.getName());
+        assertNotEquals("DB", pieceP2.getName());
 
         Piece pieceD1 = gameBoard.getPieceFromXY(5, 1);
         Piece pieceD2 = gameBoard.getPieceFromXY(1, 7);
-        assertEquals("Dog", pieceD1.getName());
-        assertEquals("Dog", pieceD2.getName());
-        assertNotEquals("Rat", pieceD1.getName());
-        assertNotEquals("Rat", pieceD2.getName());
+        assertEquals("DA", pieceD1.getName());
+        assertEquals("DB", pieceD2.getName());
+        assertNotEquals("RA", pieceD1.getName());
+        assertNotEquals("RB", pieceD2.getName());
 
         Piece pieceR1 = gameBoard.getPieceFromXY(6, 2);
         Piece pieceR2 = gameBoard.getPieceFromXY(0, 6);
-        assertEquals("Rat", pieceR1.getName());
-        assertEquals("Rat", pieceR2.getName());
-        assertNotEquals("Lion", pieceR1.getName());
-        assertNotEquals("Lion", pieceR2.getName());
+        assertEquals("RA", pieceR1.getName());
+        assertEquals("RB", pieceR2.getName());
+        assertNotEquals("LA", pieceR1.getName());
+        assertNotEquals("LB", pieceR2.getName());
 
         Piece pieceL1 = gameBoard.getPieceFromXY(6, 0);
         Piece pieceL2 = gameBoard.getPieceFromXY(0, 8);
-        assertEquals("Lion", pieceL1.getName());
-        assertEquals("Lion", pieceL2.getName());
-        assertNotEquals("Tiger", pieceL1.getName());
-        assertNotEquals("Tiger", pieceL2.getName());
+        assertEquals("LA", pieceL1.getName());
+        assertEquals("LB", pieceL2.getName());
+        assertNotEquals("TA", pieceL1.getName());
+        assertNotEquals("TB", pieceL2.getName());
     }
 
     @Test
@@ -107,67 +107,67 @@ class GameBoardTest {
         // Test for general land square position
         for(int i = 0; i< 9; i++) {
             Square squareTest = gameBoard.getSquareFromXY(0, i);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 0; i< 9; i++) {
             Square squareTest = gameBoard.getSquareFromXY(6, i);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
-        for(int i = 0; i< 9; i++) {
+        for(int i = 2; i< 7; i++) {
             Square squareTest = gameBoard.getSquareFromXY(3, i);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 0; i< 7; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i, 2);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 0; i< 7; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,6);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 0; i< 3; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,1);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 4; i< 7; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,1);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 0; i< 3; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,7);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 4; i< 7; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,7);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 0; i< 2; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,0);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 5; i< 7; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,0);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 0; i< 2; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i,8);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         for(int i = 5; i< 7; i++) {
             Square squareTest = gameBoard.getSquareFromXY(i, 8);
-            assertEquals("generaLand", squareTest.getSquareType());
+            assertEquals("generalLand", squareTest.getSquareType());
         }
 
         Square square11 = gameBoard.getSquareFromXY(1,0);
@@ -510,7 +510,7 @@ class GameBoardTest {
             {"","CA","","","","DA",""},
             {"TA","","","","","","LA"}
         };
-        assertTrue(Arrays.equals(expectedOriginal,gameBoard.getUpdate()));
+        assertArrayEquals(expectedOriginal,gameBoard.getUpdate());
 
         // The wrong original position of the pieces
         String[][] expected2 = new String[][]{
@@ -551,7 +551,8 @@ class GameBoardTest {
         gameBoard.moveUp(3,3);
         gameBoard.moveUp(3,4);
         gameBoard.moveUp(3,5);
-        gameBoard.capturePiece(3,6,4,6);
+        gameBoard.setPiecesDeath(4,6);
+        gameBoard.moveRight(3,6);
 
         String[][] expectedAfterCapture = new String[][]{
             {"LB","","","","","","TB"},

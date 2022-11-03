@@ -14,7 +14,7 @@ class SquareTest {
     @Test
     void generalLandSquareConstructorTest(){
         // Test for General Land Square with its type name
-        generalLandSquare = new Square("generalLand",1,1);
+        generalLandSquare = new Square("generalLand");
         assertEquals("generalLand", generalLandSquare.getSquareType());
         assertNotEquals("water", generalLandSquare.getSquareType());
         assertNotEquals("PolyU", generalLandSquare.getSquareType());
@@ -23,7 +23,7 @@ class SquareTest {
     @Test
     void waterSquareConstructorTest(){
         // Test for Water Square with its type name
-        waterSquare = new Square("water",1,3);
+        waterSquare = new Square("water");
         assertEquals("water", waterSquare.getSquareType());
         assertNotEquals("trap", waterSquare.getSquareType());
     }
@@ -31,7 +31,7 @@ class SquareTest {
     @Test
     void trapSquareConstructorTest(){
         // Test for Trap Square with its type name
-        trapSquare = new Square("trap",2,0);
+        trapSquare = new Square("trap");
         assertEquals("trap", trapSquare.getSquareType());
         assertNotEquals("den", trapSquare.getSquareType());
     }
@@ -39,7 +39,7 @@ class SquareTest {
     @Test
     void denSquareConstructorTest(){
         // Test for Den Square with its type name
-        denSquare = new Square("den",3,0);
+        denSquare = new Square("den");
         assertEquals("den", denSquare.getSquareType());
         assertNotEquals("generalLand", denSquare.getSquareType());
     }
@@ -47,7 +47,7 @@ class SquareTest {
     @Test
     void setPiecePositionTypeTest() {
         // Test for set the position type of the piece on the square
-        generalLandSquare = new Square("generalLand",1,1);
+        generalLandSquare = new Square("generalLand");
         Piece tigerA = new Tiger(true);
         generalLandSquare.setPiecePositionType(tigerA, "generalLand");
         assertEquals("generalLand",tigerA.getPositionType());

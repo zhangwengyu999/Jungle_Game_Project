@@ -42,58 +42,66 @@ class PieceTest {
     @Test
     void elephantConstructorTest() {
         // Test for Elephant piece with its name
-        assertEquals("Elephant", elephantA.getName());
-        assertNotEquals("Lion", elephantA.getName());
-        assertNotEquals("Pig", elephantA.getName());
+        assertEquals("EA", elephantA.getName());
+        assertEquals("EB", elephantB.getName());
+        assertNotEquals("LA", elephantA.getName());
+        assertNotEquals("PA", elephantA.getName());
     }
 
     @Test
     void lionConstructorTest() {
         // Test for Lion piece with its name
-        assertEquals("Lion", lionA.getName());
-        assertNotEquals("Elephant", lionA.getName());
+        assertEquals("LA", lionA.getName());
+        assertEquals("LB", lionB.getName());
+        assertNotEquals("EA", lionA.getName());
     }
 
     @Test
     void tigerConstructorTest() {
         // Test for Tiger piece with its name
-        assertEquals("Tiger", tigerA.getName());
-        assertNotEquals("Leopard", tigerA.getName());
+        assertEquals("TA", tigerA.getName());
+        assertEquals("TB", tigerB.getName());
+        assertNotEquals("LA", tigerA.getName());
     }
 
     @Test
     void leopardConstructorTest() {
         // Test for Leopard piece with its name
-        assertEquals("Leopard", leopardA.getName());
-        assertNotEquals("Wolf", leopardA.getName());
+        assertEquals("PA", leopardA.getName());
+        assertEquals("PB", leopardB.getName());
+        assertNotEquals("WA", leopardA.getName());
     }
 
     @Test
     void wolfConstructorTest() {
         // Test for Wolf piece with its name
-        assertEquals("Wolf", wolfA.getName());
-        assertNotEquals("Dog", wolfA.getName());
+        assertEquals("WA", wolfA.getName());
+        assertEquals("WB", wolfB.getName());
+        assertNotEquals("DA", wolfA.getName());
     }
 
     @Test
     void dogConstructorTest() {
         // Test for Dog piece with its name
-        assertEquals("Dog", dogA.getName());
-        assertNotEquals("Cal", dogA.getName());
+        assertEquals("DA", dogA.getName());
+        assertEquals("DB", dogB.getName());
+        assertNotEquals("CA", dogA.getName());
     }
 
     @Test
     void catConstructorTest() {
         // Test for Cat piece with its name
-        assertEquals("Cat", catA.getName());
-        assertNotEquals("Rat", catA.getName());
+        assertEquals("CA", catA.getName());
+        assertEquals("CB", catB.getName());
+        assertNotEquals("RA", catA.getName());
     }
 
     @Test
     void ratConstructorTest() {
         // Test for Rat piece with its name
-        assertEquals("Rat", ratA.getName());
-        assertNotEquals("Elephant", ratA.getName());
+        assertEquals("RA", ratA.getName());
+        assertEquals("RB", ratB.getName());
+        assertNotEquals("EA", ratA.getName());
     }
 
     @Test
