@@ -14,7 +14,8 @@ class GameBoardTest {
     @BeforeEach
     void setUp() {
         // Set up the GameBoard
-        gameBoard = new GameBoard();
+        gameBoard.resetGameBoard();
+        gameBoard = GameBoard.getGameBoard();
     }
 
 
@@ -419,7 +420,7 @@ class GameBoardTest {
             {"","","","","","",""},
             {"","","","","","",""},
             {"EA","","WA","","PA","","RA"},
-            {"","","CA","","DA","",""},
+            {"","CA","","","DA","",""},
             {"TA","","","","","",""}
         };
         assertArrayEquals(expected2, gameBoard.getUpdate());
@@ -436,13 +437,13 @@ class GameBoardTest {
         String[][] expected3 = new String[][]{
             {"LB","","","","","","TB"},
             {"","DB","","","","CB",""},
-            {"RB","","PB","","WB","","EB"},
+            {"RB","","PB","","WB","LA","EB"},
             {"","","","","","",""},
             {"EA","","","","","",""},
             {"","TA","","","","",""},
             {"","","WA","","PA","","RA"},
-            {"","CA","","","","DA",""},
-            {"","","","","","","LA"}
+            {"","CA","","","DA","",""},
+            {"","","","","","",""}
         };
         assertFalse(Arrays.equals(expected3,gameBoard.getUpdate()));
 
@@ -450,13 +451,13 @@ class GameBoardTest {
         String[][] expected4 = new String[][]{
             {"LB","","","","","","TB"},
             {"","DB","","","","CB",""},
-            {"RB","","PB","","WB","","EB"},
+            {"RB","","PB","","WB","LA","EB"},
             {"","","","","","",""},
             {"EA","","","","","",""},
             {"","","","TA","","",""},
             {"","","WA","","PA","","RA"},
-            {"","CA","","","","DA",""},
-            {"","","","","","","LA"}
+            {"","CA","","","DA","",""},
+            {"","","","","","",""}
         };
         assertArrayEquals(expected4, gameBoard.getUpdate());
 
@@ -470,13 +471,13 @@ class GameBoardTest {
         String[][] expected5 = new String[][]{
             {"LB","","","","","","TB"},
             {"","DB","","","","CB",""},
-            {"RB","","PB","","WB","","EB"},
+            {"RB","","PB","","WB","LA","EB"},
             {"","","","","","",""},
-            {"","","","","","",""},
-            {"","","","RA","","",""},
-            {"EA","","WA","","PA","",""},
-            {"","CA","","","","DA",""},
-            {"TA","","","","","","LA"}
+            {"EA","","","","","",""},
+            {"","","","TA","RA","",""},
+            {"","","WA","","PA","",""},
+            {"","CA","","","DA","",""},
+            {"","","","","","",""}
         };
         assertFalse(Arrays.equals(expected5,gameBoard.getUpdate()));
 
@@ -484,13 +485,13 @@ class GameBoardTest {
         String[][] expected6 = new String[][]{
             {"LB","","","","","","TB"},
             {"","DB","","","","CB",""},
-            {"RB","","PB","","WB","","EB"},
+            {"RB","","PB","","WB","LA","EB"},
             {"","","","","","",""},
-            {"","","","","","",""},
-            {"","","","","","RA",""},
-            {"EA","","WA","","PA","",""},
-            {"","CA","","","","DA",""},
-            {"TA","","","","","","LA"}
+            {"EA","","","","","",""},
+            {"","","","TA","","RA",""},
+            {"","","WA","","PA","",""},
+            {"","CA","","","DA","",""},
+            {"","","","","","",""}
         };
         assertArrayEquals(expected6, gameBoard.getUpdate());
     }
@@ -516,13 +517,13 @@ class GameBoardTest {
         String[][] expected2 = new String[][]{
             {"LB","","","","","","TB"},
             {"","DB","","","","CB",""},
-            {"RB","","PB","","WB","","EB"},
+            {"RB","","PB","","WB","LA","EB"},
             {"","","","","","",""},
             {"","","","","","",""},
             {"","","","","","","RA"},
             {"EA","","WA","","PA","",""},
             {"","CA","","","","DA",""},
-            {"TA","","","","","","LA"}
+            {"TA","","","","","",""}
         };
         assertFalse(Arrays.equals(expected2,gameBoard.getUpdate()));
     }

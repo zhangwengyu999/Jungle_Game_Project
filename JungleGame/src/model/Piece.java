@@ -12,6 +12,7 @@ public abstract class Piece {
         this.isAlive = true;
         this.rank = inRank;
         this.isBelongToPlayerA = inIsBelongToPlayerA;
+        this.positionType = "generalLand";
     }
 
     public boolean isAlive(){

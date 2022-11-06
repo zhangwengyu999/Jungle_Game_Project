@@ -7,15 +7,23 @@ public class GameBoard {
     private Piece[][] pieces;
     private int alivePieceOfPlayerA;
     private int alivePieceOfPlayerB;
+    private static GameBoard gameBoard = new GameBoard();
 
-
-    public GameBoard(){
+    private GameBoard(){
         WIDTH = 7;
         HEIGHT = 9;
         alivePieceOfPlayerA = 8;
         alivePieceOfPlayerB = 8;
         initializeSquares();
         initializePieces();
+    }
+
+    public static GameBoard getGameBoard(){
+        return gameBoard;
+    }
+
+    public static void resetGameBoard(){
+        gameBoard = new GameBoard();
     }
 
     /**
@@ -136,6 +144,9 @@ public class GameBoard {
     }
 
     public Piece getPieceFromXY(int inX, int inY) {
+        if (inX < 0 || inX >= WIDTH || inY < 0 || inY >= HEIGHT) {
+            return null;
+        }
         return pieces[inX][inY];
     }
 
@@ -148,23 +159,76 @@ public class GameBoard {
     public void movePieceToXY(int fromX, int fromY, int toX, int toY) {
         pieces[toX][toY] = pieces[fromX][fromY];
         pieces[fromX][fromY] = null;
+        pieces[toX][toY].setPositionType(squares[toX][toY].getSquareType());
     }
 
+    /*
+    * @param inX, inY: a piece at (inX, inY)
+    * move up a piece at (inX, inY), Lion and Tiger can jump over the water
+    */
     public void moveUp(int inX, int inY) {
-        movePieceToXY(inX,inY,inX,inY+1);
+        if (getPieceFromXY(inX, inY) != null) {
+            if ((getPieceFromXY(inX, inY).getRank() == 7 || getPieceFromXY(inX, inY).getRank() == 6)
+                    && ((inX == 1 && inY == 2) || (inX == 2 && inY == 2)
+                    || (inX == 4 && inY == 2) || (inX == 5 && inY == 2))) {
+                movePieceToXY(inX, inY, inX, inY + 4);
+            }
+            else {
+                movePieceToXY(inX, inY, inX, inY + 1);
+            }
+        }
+    }
+    /*
+     * @param inX, inY: a piece at (inX, inY)
+     * move down a piece at (inX, inY), Lion and Tiger can jump over the water
+     */
+    public void moveDown(int inX, int inY){
+        if (getPieceFromXY(inX, inY) != null) {
+            if ((getPieceFromXY(inX, inY).getRank() == 6 || getPieceFromXY(inX, inY).getRank() == 7) &&
+                    (inX == 1 && inY == 6) || (inX == 2 && inY == 6) || (inX == 4 && inY == 6) || (inX == 5 && inY == 6)) {
+                movePieceToXY(inX, inY, inX, inY - 4);
+            }
+            else {
+                movePieceToXY(inX, inY, inX, inY - 1);
+            }
+        }
     }
 
-    public void moveDown(int inX, int inY) {
-        movePieceToXY(inX,inY,inX,inY-1);
-    }
 
+    /*
+     * @param inX, inY: a piece at (inX, inY)
+     * move left a piece at (inX, inY), Lion and Tiger can jump over the water
+     */
     public void moveLeft(int inX, int inY) {
-        movePieceToXY(inX, inY, inX-1, inY);
+        if (getPieceFromXY(inX, inY) != null) {
+            if ((getPieceFromXY(inX, inY).getRank() == 6 || getPieceFromXY(inX, inY).getRank() == 7) &&
+                    ((inX == 3 && inY == 5) || (inX == 3 && inY == 4) || (inX == 3 && inY == 3)
+                        || (inX == 6 && inY == 5) || (inX == 6 && inY == 4) || (inX == 6 && inY == 3))) {
+                    movePieceToXY(inX, inY, inX - 3, inY);
+                }
+                else {
+                    movePieceToXY(inX, inY, inX - 1, inY);
+                }
+        }
+    }
+    /*
+     * @param inX, inY: a piece at (inX, inY)
+     * move right a piece at (inX, inY), Lion and Tiger can jump over the water
+     */
+    public void moveRight(int inX, int inY) {
+        if (getPieceFromXY(inX, inY) != null) {
+            if ((getPieceFromXY(inX, inY).getRank() == 7 || getPieceFromXY(inX, inY).getRank() == 6)
+                    && (inX == 0 && inY == 3 || inX == 0 && inY == 4 || inX == 0 && inY == 5
+                        || inX == 3 && inY == 3 || inX == 3 && inY == 4 || inX == 3 && inY == 5)) {
+                    movePieceToXY(inX, inY, inX + 3, inY);
+                }
+                else {
+                    movePieceToXY(inX, inY, inX + 1, inY);
+                }
+        }
+
     }
 
-    public void moveRight(int inX, int inY) {
-        movePieceToXY(inX, inY, inX+1, inY);
-    }
 
     // new+new 2022.11.03
     /*
@@ -172,15 +236,16 @@ public class GameBoard {
     Therefore, we directly set a function to set the death, and left the judgment to the controller.
     */
     public void setPiecesDeath(int inX, int inY) {
-        Piece piece = getPieceFromXY(inX, inY);
-        if(piece.getIsBelongToPlayerA()){
-            alivePieceOfPlayerA--;
+        if (getPieceFromXY(inX, inY) != null) {
+            Piece piece = getPieceFromXY(inX, inY);
+            if (piece.getIsBelongToPlayerA()) {
+                alivePieceOfPlayerA--;
+            } else {
+                alivePieceOfPlayerB--;
+            }
+            piece.setDead();
+            pieces[inX][inY] = null;
         }
-        else{
-            alivePieceOfPlayerB--;
-        }
-        piece.setDead();
-        pieces[inX][inY] = null;
     }
 
     // new

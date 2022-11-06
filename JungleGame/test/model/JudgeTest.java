@@ -13,8 +13,9 @@ class JudgeTest {
     @BeforeEach
     void setUp() {
         // set up the GameBoard and Judge for the test
-        gameBoard = new GameBoard();
+        gameBoard = GameBoard.getGameBoard();
         judge = new Judge();
+        gameBoard.resetGameBoard();
     }
 
     @Test
@@ -137,7 +138,7 @@ class JudgeTest {
     void isWinTestByInDenTest() {
         // Test for win by entering the opponent's Den
 
-        assertFalse(judge.isWin(8,gameBoard.getPieceFromXY(0,0)));
+        assertFalse(judge.isAWin(gameBoard.getPieceFromXY(0,0)));
         gameBoard.moveRight(2,2);
 
         int i=2;
@@ -145,13 +146,26 @@ class JudgeTest {
             gameBoard.moveUp(3,i++);
         }
         // The WolfA move to the Den of PlayerB
-        assertTrue(judge.isWin(8,gameBoard.getPieceFromXY(3,8)));
+        assertTrue(judge.isAWin(gameBoard.getPieceFromXY(3,8)));
     }
 
     @Test
     void isWinTestByCaptureAllTest() {
         // Test for win by capturing all the pieces of the opponent
-        assertTrue(judge.isWin(0,gameBoard.getPieceFromXY(0,0)));
-        assertFalse(judge.isWin(8,gameBoard.getPieceFromXY(0,0)));
+        gameBoard.setPiecesDeath(0,0);
+        assertFalse(judge.isBWin(gameBoard.getPieceFromXY(0,8)));
+        gameBoard.setPiecesDeath(0,8);
+        assertFalse(judge.isAWin(gameBoard.getPieceFromXY(0,2)));
+        gameBoard.setPiecesDeath(0,2);
+        gameBoard.setPiecesDeath(1,1);
+        gameBoard.setPiecesDeath(2,2);
+        gameBoard.setPiecesDeath(4,2);
+        gameBoard.setPiecesDeath(5,1);
+        gameBoard.setPiecesDeath(6,0);
+        gameBoard.setPiecesDeath(6,2);
+        assertTrue(judge.isBWin(gameBoard.getPieceFromXY(6,8)));
+        assertFalse(judge.isAWin(gameBoard.getPieceFromXY(6,8)));
+        assertFalse(judge.isAWin(gameBoard.getPieceFromXY(0,0)));
+
     }
 }
