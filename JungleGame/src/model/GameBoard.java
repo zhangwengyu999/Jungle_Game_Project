@@ -22,7 +22,7 @@ public class GameBoard {
         return gameBoard;
     }
 
-    public static void resetGameBoard(){
+    public void resetGameBoard(){
         gameBoard = new GameBoard();
     }
 
@@ -162,76 +162,126 @@ public class GameBoard {
         pieces[toX][toY].setPositionType(squares[toX][toY].getSquareType());
     }
 
-    /*
-    * @param inX, inY: a piece at (inX, inY)
-    * move up a piece at (inX, inY), Lion and Tiger can jump over the water
-    */
-    public void moveUp(int inX, int inY) {
+    /** new 2022.11.10
+     * Get the destination after move up(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
+     * @param inX, inY: a piece at (inX, inY)
+     * @return int[] the destination coordinate of the piece
+     */
+    public int[] getMoveUpDestination(int inX, int inY) {
         if (getPieceFromXY(inX, inY) != null) {
             if ((getPieceFromXY(inX, inY).getRank() == 7 || getPieceFromXY(inX, inY).getRank() == 6)
                     && ((inX == 1 && inY == 2) || (inX == 2 && inY == 2)
                     || (inX == 4 && inY == 2) || (inX == 5 && inY == 2))) {
-                movePieceToXY(inX, inY, inX, inY + 4);
-            }
-            else {
-                movePieceToXY(inX, inY, inX, inY + 1);
+                return new int[]{inX, inY + 4};
+            } else {
+                return new int[] {inX,inY+1};
             }
         }
+        return null;
     }
-    /*
+
+    /**
+    * move up a piece at (inX, inY), Lion and Tiger can jump over the water
+    * @param inX, inY: a piece at (inX, inY)
+    */
+    public void moveUp(int inX, int inY) {
+        if (getPieceFromXY(inX, inY) != null) {
+            int[] temp = getMoveUpDestination(inX, inY);
+            movePieceToXY(inX, inY, temp[0], temp[1]);
+        }
+    }
+
+
+    /** new 2022.11.10
+     * Get the destination after move down(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
+     * @param inX, inY: a piece at (inX, inY)
+     * @return int[] the destination coordinate of the piece
+     */
+    public int[] getMoveDownDestination(int inX, int inY){
+        if (getPieceFromXY(inX, inY) != null) {
+            if ((getPieceFromXY(inX, inY).getRank() == 6 || getPieceFromXY(inX, inY).getRank() == 7) &&
+                    (inX == 1 && inY == 6) || (inX == 2 && inY == 6) || (inX == 4 && inY == 6) || (inX == 5 && inY == 6)) {
+                return new int[]{inX, inY - 4};
+            }
+            else {
+                return new int[]{inX, inY - 1};
+            }
+        }
+        return null;
+    }
+
+    /**
      * @param inX, inY: a piece at (inX, inY)
      * move down a piece at (inX, inY), Lion and Tiger can jump over the water
      */
     public void moveDown(int inX, int inY){
         if (getPieceFromXY(inX, inY) != null) {
-            if ((getPieceFromXY(inX, inY).getRank() == 6 || getPieceFromXY(inX, inY).getRank() == 7) &&
-                    (inX == 1 && inY == 6) || (inX == 2 && inY == 6) || (inX == 4 && inY == 6) || (inX == 5 && inY == 6)) {
-                movePieceToXY(inX, inY, inX, inY - 4);
-            }
-            else {
-                movePieceToXY(inX, inY, inX, inY - 1);
-            }
+            int[] temp = getMoveDownDestination(inX, inY);
+            movePieceToXY(inX, inY, temp[0], temp[1]);
         }
     }
 
+    /** new 2022.11.10
+     * Get the destination after move left (but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
+     * @param inX, inY: a piece at (inX, inY)
+     * @return int[] the destination coordinate of the piece
+     */
+    public int[] getMoveLeftDestination(int inX, int inY) {
+        if (getPieceFromXY(inX, inY) != null) {
+            if ((getPieceFromXY(inX, inY).getRank() == 6 || getPieceFromXY(inX, inY).getRank() == 7) &&
+                    ((inX == 3 && inY == 5) || (inX == 3 && inY == 4) || (inX == 3 && inY == 3)
+                            || (inX == 6 && inY == 5) || (inX == 6 && inY == 4) || (inX == 6 && inY == 3))) {
+                return new int[]{inX-3, inY};
+            }
+            else {
+                return new int[]{inX-1, inY};
+            }
+        }
+        return null;
+    }
 
-    /*
+    /**
      * @param inX, inY: a piece at (inX, inY)
      * move left a piece at (inX, inY), Lion and Tiger can jump over the water
      */
     public void moveLeft(int inX, int inY) {
         if (getPieceFromXY(inX, inY) != null) {
-            if ((getPieceFromXY(inX, inY).getRank() == 6 || getPieceFromXY(inX, inY).getRank() == 7) &&
-                    ((inX == 3 && inY == 5) || (inX == 3 && inY == 4) || (inX == 3 && inY == 3)
-                        || (inX == 6 && inY == 5) || (inX == 6 && inY == 4) || (inX == 6 && inY == 3))) {
-                    movePieceToXY(inX, inY, inX - 3, inY);
-                }
-                else {
-                    movePieceToXY(inX, inY, inX - 1, inY);
-                }
+            int[] temp = getMoveLeftDestination(inX, inY);
+            movePieceToXY(inX, inY, temp[0], temp[1]);
         }
     }
-    /*
+
+    /** new 2022.11.10
+     * Get the destination after move right(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
+     * @param inX, inY: a piece at (inX, inY)
+     * @return int[] the destination coordinate of the piece
+     */
+    public int[] getMoveRightDestination(int inX, int inY) {
+        if (getPieceFromXY(inX, inY) != null) {
+            if ((getPieceFromXY(inX, inY).getRank() == 7 || getPieceFromXY(inX, inY).getRank() == 6)
+                    && (inX == 0 && inY == 3 || inX == 0 && inY == 4 || inX == 0 && inY == 5
+                    || inX == 3 && inY == 3 || inX == 3 && inY == 4 || inX == 3 && inY == 5)) {
+                return new int[]{inX+3, inY};
+            }
+            else {
+                return new int[]{inX+1, inY};
+            }
+        }
+        return null;
+    }
+    /**
      * @param inX, inY: a piece at (inX, inY)
      * move right a piece at (inX, inY), Lion and Tiger can jump over the water
      */
     public void moveRight(int inX, int inY) {
         if (getPieceFromXY(inX, inY) != null) {
-            if ((getPieceFromXY(inX, inY).getRank() == 7 || getPieceFromXY(inX, inY).getRank() == 6)
-                    && (inX == 0 && inY == 3 || inX == 0 && inY == 4 || inX == 0 && inY == 5
-                        || inX == 3 && inY == 3 || inX == 3 && inY == 4 || inX == 3 && inY == 5)) {
-                    movePieceToXY(inX, inY, inX + 3, inY);
-                }
-                else {
-                    movePieceToXY(inX, inY, inX + 1, inY);
-                }
+            int[] temp = getMoveRightDestination(inX, inY);
+            movePieceToXY(inX, inY, temp[0], temp[1]);
         }
-
     }
 
-
     // new+new 2022.11.03
-    /*
+    /**
     The function of capture was deleted. In model, we did not make judgment, but only set the survival state of chess pieces.
     Therefore, we directly set a function to set the death, and left the judgment to the controller.
     */

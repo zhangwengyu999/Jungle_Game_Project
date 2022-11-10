@@ -14,10 +14,9 @@ class GameBoardTest {
     @BeforeEach
     void setUp() {
         // Set up the GameBoard
-        gameBoard.resetGameBoard();
         gameBoard = GameBoard.getGameBoard();
+        gameBoard.resetGameBoard();
     }
-
 
     @Test
     void pieceInitialPositionTest() {

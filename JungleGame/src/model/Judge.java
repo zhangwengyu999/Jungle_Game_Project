@@ -5,7 +5,17 @@ import java.util.HashMap;
 public class Judge {
 
     private final int LEGAL_MOVE_STEP = 1;
-    private final GameBoard gameBoard = GameBoard.getGameBoard();
+    private static GameBoard gameBoard;
+    private static final Judge gameJudge = new Judge();
+
+    private Judge() {
+//        gameBoard = GameBoard.getGameBoard();
+    }
+
+    public static Judge getGameJudge(GameBoard inGameBoard) {
+        gameBoard = inGameBoard;
+        return gameJudge;
+    }
 
     // new
     public boolean isLegalMovement(int inX, int inY, String inDirection) {

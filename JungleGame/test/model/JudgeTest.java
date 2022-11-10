@@ -14,7 +14,7 @@ class JudgeTest {
     void setUp() {
         // set up the GameBoard and Judge for the test
         gameBoard = GameBoard.getGameBoard();
-        judge = new Judge();
+        judge = Judge.getGameJudge(gameBoard);
         gameBoard.resetGameBoard();
     }
 
