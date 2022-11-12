@@ -11,14 +11,19 @@ public class InfoBox {
     }
 
     public static void winnerInfo(){
-        System.out.println("The Winner is ");
+        System.out.print("The Winner is ");
     }
 
     public static void startRoundInfo(){
-        System.out.println("Start from Player ");
+        System.out.print("Start from Player ");
     }
 
     public static void nextRoundInfo(){
-        System.out.println("It is turn of ");
+        System.out.print("It is turn of ");
+    }
+
+    public static void wrongOptionInfo(){
+        System.out.println("Wrong Option!");
+        System.out.print("Please input the option in bracket as [x]: ");
     }
 }
