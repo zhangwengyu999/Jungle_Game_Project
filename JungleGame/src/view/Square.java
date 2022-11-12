@@ -45,21 +45,21 @@ public class Square {
 
     public void setAsTrapFrame(){
         blockFrame =
-                    "+##########+\n" +
+                    "+#-#-##-#-#+\n" +
                     "#          #\n" +
                     "#          #\n" +
                     "#          #\n" +
-                    "+##########+";
+                    "+#-#-##-#-#+";
 
     }
 
     public void setAsRiverFrame(){
         blockFrame =
-                    "+~~~~~~~~~~+\n" +
-                    "~          ~\n" +
-                    "~          ~\n" +
-                    "~          ~\n" +
-                    "+~~~~~~~~~~+";
+                    "+@@@@@@@@@@+\n" +
+                    "@          @\n" +
+                    "@          @\n" +
+                    "@          @\n" +
+                    "+@@@@@@@@@@+";
 
     }
 
@@ -86,6 +86,16 @@ public class Square {
                 }
                 else {
                     this.pixels[heightPointer][widthPointer] = c;
+                }
+                if (!pieceContent.equals("  ")) {
+                    if(pieceContent.charAt(1) == 'A') {
+                        this.pixels[2][4] = '[';
+                        this.pixels[2][7] = ']';
+                    }else {
+                        this.pixels[2][4] = '<';
+                        this.pixels[2][7] = '>';
+                    }
+
                 }
                 widthPointer++;
             } else {

@@ -39,42 +39,77 @@ public class Window {
         // ...
     }
 
+    public void showGameBoard(String[][] inStrArr) {
+        this.renderFromModel(inStrArr);
+        this.renderCanva();
+    }
 
-    public void addSquare(Square square) {
+
+    private void addSquareToGameBoard(Square square) {
         int x = square.getX();
         int y = square.getY();
         char[][] squarePixels = square.getPixels();
         for (int i = 0; i < square.getHeight(); i++) {
             for (int j = 0; j < square.getWidth(); j++) {
-                this.gameBoardPixels[y + i][x + j] = squarePixels[i][j];
+                this.gameBoardPixels[(square.getHeight())*y + i][(square.getWidth())*x + j] = squarePixels[i][j];
             }
         }
     }
 
-    public void renderCanva() {
+    private void renderCanva() {
+        int rowNum = 9;
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.width; j++) {
-                System.out.print(this.gameBoardPixels[i][j]);
+                if (j==0) {
+                    if ((i==2 || i==7 || i == 12 || i == 17 || i == 22 || i == 27 || i == 32 || i == 37 || i == 42)) {
+                        String temp = rowNum+" ";
+                        rowNum--;
+                        System.out.print(temp+""+this.gameBoardPixels[i][j]);
+                    }else {
+                        System.out.print("  "+this.gameBoardPixels[i][j]);
+                    }
+                }
+                else {
+                    System.out.print(this.gameBoardPixels[i][j]);
+                }
             }
             System.out.println();
         }
+        String str = "        1           2           3           4           5           6           7     ";
+        System.out.println(str);
     }
 
-    public void renderFromModel(String[][] inStrArr) {
+    private void renderFromModel(String[][] inStrArr) {
         for (int i=0;i<inStrArr.length;i++) {
             for (int j=0;j<inStrArr[i].length;j++) {
                 String content = inStrArr[i][j];
                 Square temp;
-                if (content.equals("")) {
-                    temp = new Square(j, i, "g", "  ");
-                } else {
-                    temp = new Square(j, i, "g", content);
-                }
-                this.addSquare(temp);
+                String type = getType(i,j);
+                    if (content.equals("")) {temp = new Square(j, i, type, "  ");}
+                    else {temp = new Square(j, i, type, content);}
+                    this.addSquareToGameBoard(temp);
             }
+
             System.out.println();
         }
     }
+
+    private String getType(int i, int j) {
+        if ((i==0 && j ==2) || (i==0 && j ==4) || (i==1 && j ==3) || (i==8 && j ==2) || (i==8 && j ==4) || (i==7 && j ==3)) {
+            return "t";
+        }
+        else if ((i==0 && j ==3) || (i==8 && j ==3)) {
+            return  "d";
+        }
+        else if ((i==3 && j ==1) ||(i==4 && j ==1) ||(i==5 && j ==1) || (i==3 && j ==2) ||(i==4 && j ==2) ||(i==5 && j ==2) ||
+                (i==3 && j ==4) ||(i==4 && j ==4) ||(i==5 && j ==4) || (i==3 && j ==5) ||(i==4 && j ==5) ||(i==5 && j ==5)) {
+            return  "w";
+        }
+        else {
+            return  "g";
+        }
+    }
+
 
     public static void main(String[] args) {
         Window window = new Window();
@@ -89,8 +124,7 @@ public class Window {
                 {"","CA","","","","DA",""},
                 {"TA","","","","","","LA"}
         };
-        window.renderFromModel(expectedOriginal);
-        window.renderCanva();
+        window.showGameBoard(expectedOriginal);
     }
 
 }
