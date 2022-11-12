@@ -150,6 +150,29 @@ public class GameBoard {
         return pieces[inX][inY];
     }
 
+    public Piece getPieceAfterMovement(int inX, int inY, String direction) {
+        if (inX < 0 || inX >= WIDTH || inY < 0 || inY >= HEIGHT) {
+            return null;
+        }
+        else{
+            if (direction.equals("U")){
+                return pieces[inX][inY+1];
+            }
+            else if(direction.equals("D")){
+                return pieces[inX][inY-1];
+            }
+            else if(direction.equals("L")){
+                return pieces[inX-1][inY];
+            }
+            else if(direction.equals("R")){
+                return pieces[inX][inY+1];
+            }
+            else{
+                return null;
+            }
+        }
+    }
+
     // new
     public Square getSquareFromXY(int inX, int inY) {
         return squares[inX][inY];

@@ -4,6 +4,7 @@ import model.GameBoard;
 import model.Judge;
 import view.InfoBox;
 import view.InputBox;
+import view.MenuPage;
 import view.Window;
 
 import java.util.List;
@@ -46,7 +47,10 @@ public class GameController {
         Random rand = new Random();
         return rand.nextBoolean();
     }
-
+    public void welcome(){
+        System.out.println("Welcome to the Jungle Game!\n");
+        gameStart();
+    }
     public void gameStart(){
         gameWindow.showMenuWindow();
         boolean start = false;
@@ -72,15 +76,9 @@ public class GameController {
 
             // Randomly start from player A or B
             InfoBox.startRoundInfo();
-
-            if (isPlayerARound){
-                System.out.print(playerAName);
-                gameProcess();
-            }
-            else{
-                System.out.print(playerBName);
-                gameProcess();
-            }
+            printGameBoard();
+            System.out.println("The Game Start randomly from " + (isPlayerARound ? playerAName : playerBName));
+            gameProcess();
         }
         else {
             System.exit(0);
@@ -95,16 +93,38 @@ public class GameController {
             int x = Integer.parseInt(moveArr[0]);
             int y = Integer.parseInt(moveArr[1]);
             String d = moveArr[2];
-            if (gameJudge.isLegalMovement(x, y, d, isPlayerARound)) {
-               modelController.playerMovePiece(x, y, d);
+            int desX = x-1;
+            int desY = y-1;
+            if (gameJudge.isLegalMovement(desX, desY, d, isPlayerARound)) {
+               modelController.playerMovePiece(desX, desY, d);
                toggleRound();
-
-
+               if (!gameJudge.isAWin(gameBoard.getPieceAfterMovement(desX, desY, d))
+                       && !gameJudge.isBWin(gameBoard.getPieceAfterMovement(desX, desY, d))) {
+                   printGameBoard();
+                   System.out.println("Next round is " + (isPlayerARound ? playerAName : playerBName) + "'s turn.");
+                   gameProcess();
+               }
+               else {
+                   printGameBoard();
+                   InfoBox.EndGameInfo();
+                   InfoBox.winnerInfo();
+                   if (gameJudge.isAWin(gameBoard.getPieceFromXY(desX,desY))) {
+                       System.out.print(playerAName+"\n");
+                   } else {
+                       System.out.print(playerBName+"\n");
+                   }
+                   gameBoard.resetGameBoard();
+                   gameStart();
+               }
+            }
+            else {
+                InputBox.pickAndMovePieceWrongSituation();
+                gameProcess();
             }
         }
         else{
-
-
+            InputBox.pickAndMovePieceWrongSituation();
+            gameProcess();
         }
     }
 

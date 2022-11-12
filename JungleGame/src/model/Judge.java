@@ -244,7 +244,7 @@ public class Judge {
             }
             return pieceFrom.getRank()>=pieceTo.getRank();
         }
-        return false;
+        return true;
     }
 
     public boolean isAWin(Piece inPiece) {

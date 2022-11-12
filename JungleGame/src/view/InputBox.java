@@ -22,8 +22,7 @@ public class InputBox{
     }
 
     public static void pickAndMovePieceWrongSituation(){
-            String str = "You have wrong input, please input again!\n"+"For x and y are coordinate of piece and d is the direction you prefer to move\n"
-                    +"Please pick and move a piece with input {x y d}: ";
+            String str = "You have wrong input, please input again!\n";
         System.out.print(str); }
 
 

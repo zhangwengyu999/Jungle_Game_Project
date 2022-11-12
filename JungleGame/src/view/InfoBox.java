@@ -18,10 +18,6 @@ public class InfoBox {
         System.out.print("Randomly start from: ");
     }
 
-    public static void nextRoundInfo(){
-        System.out.print("It is turn of ");
-    }
-
     public static void wrongOptionInfo(){
         System.out.println("Wrong Option!");
         System.out.print("Please input the option in bracket as [x]: ");
