@@ -3,7 +3,7 @@ package view;
 public class InfoBox {
     private String infoString;
     public static void startGameInfo() {
-        System.out.println("Game Start!");
+        System.out.println("Game Started!");
     }
 
     public static void EndGameInfo(){
@@ -15,7 +15,7 @@ public class InfoBox {
     }
 
     public static void startRoundInfo(){
-        System.out.print("Start from Player ");
+        System.out.print("Randomly start from: ");
     }
 
     public static void nextRoundInfo(){

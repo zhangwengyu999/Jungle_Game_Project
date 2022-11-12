@@ -18,10 +18,14 @@ public class Judge {
     }
 
     // new
-    public boolean isLegalMovement(int inX, int inY, String inDirection) {
+    public boolean isLegalMovement(int inX, int inY, String inDirection, boolean isPlayerARound) {
 
         // No piece to select
         if (gameBoard.getPieceFromXY(inX, inY) == null) {
+            return false;
+        }
+
+        if (gameBoard.getPieceFromXY(inX, inY).getIsBelongToPlayerA() != isPlayerARound) {
             return false;
         }
 

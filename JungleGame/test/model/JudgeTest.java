@@ -23,46 +23,46 @@ class JudgeTest {
         // Tests for the legal movement of the pieces
 
         // Test for out of the GameBoard boundary
-        assertFalse(judge.isLegalMovement(0, 0, "L"));
-        assertFalse(judge.isLegalMovement(0,0,"D"));
+        assertFalse(judge.isLegalMovement(0, 0, "L",true));
+        assertFalse(judge.isLegalMovement(0,0,"D",true));
 
-        assertFalse(judge.isLegalMovement(6,0,"D"));
-        assertFalse(judge.isLegalMovement(6,0,"R"));
+        assertFalse(judge.isLegalMovement(6,0,"D",true));
+        assertFalse(judge.isLegalMovement(6,0,"R",true));
 
-        assertFalse(judge.isLegalMovement(6,8,"R"));
-        assertFalse(judge.isLegalMovement(6,8,"U"));
+        assertFalse(judge.isLegalMovement(6,8,"R",false));
+        assertFalse(judge.isLegalMovement(6,8,"U",false));
 
-        assertFalse(judge.isLegalMovement(0,8,"L"));
-        assertFalse(judge.isLegalMovement(0,8,"U"));
+        assertFalse(judge.isLegalMovement(0,8,"L",false));
+        assertFalse(judge.isLegalMovement(0,8,"U",false));
 
         // Test for the legal movement
-        assertTrue(judge.isLegalMovement(0,0,"R"));
-        assertTrue(judge.isLegalMovement(0,0,"U"));
+        assertTrue(judge.isLegalMovement(0,0,"R",true));
+        assertTrue(judge.isLegalMovement(0,0,"U",true));
 
-        assertTrue(judge.isLegalMovement(6,0,"U"));
-        assertTrue(judge.isLegalMovement(6,0,"L"));
+        assertTrue(judge.isLegalMovement(6,0,"U",true));
+        assertTrue(judge.isLegalMovement(6,0,"L",true));
 
-        assertTrue(judge.isLegalMovement(6,8,"L"));
-        assertTrue(judge.isLegalMovement(6,8,"D"));
+        assertTrue(judge.isLegalMovement(6,8,"L",false));
+        assertTrue(judge.isLegalMovement(6,8,"D",false));
 
-        assertTrue(judge.isLegalMovement(0,8,"D"));
-        assertTrue(judge.isLegalMovement(0,8,"R"));
+        assertTrue(judge.isLegalMovement(0,8,"D",false));
+        assertTrue(judge.isLegalMovement(0,8,"R",false));
 
         // Test for move to the own Den
         gameBoard.moveRight(0,0);
         gameBoard.moveRight(1,0);
-        assertFalse(judge.isLegalMovement(2,0,"R"));
+        assertFalse(judge.isLegalMovement(2,0,"R",true));
 
         // Test for move into the Water
         //      Test for illegal Wolf moves into Water
-        assertFalse(judge.isLegalMovement(2,2,"U"));
+        assertFalse(judge.isLegalMovement(2,2,"U",true));
         //      Test for legal Rat moves into Water
         gameBoard.moveUp(6,2);
-        assertTrue(judge.isLegalMovement(6,3,"L"));
+        assertTrue(judge.isLegalMovement(6,3,"L",true));
 
         // No piece to select
-        assertFalse(judge.isLegalMovement(1,0,"U"));
-        assertTrue(judge.isLegalMovement(1,1,"U"));
+        assertFalse(judge.isLegalMovement(1,0,"U",true));
+        assertTrue(judge.isLegalMovement(1,1,"U",true));
 
         // There are Rat in the river when Tiger or Lion jump cross the Water.
         gameBoard.moveLeft(6,3);
@@ -70,9 +70,9 @@ class JudgeTest {
         gameBoard.moveUp(6,0);
         gameBoard.moveUp(6,1);
         gameBoard.moveUp(6,2);
-        assertFalse(judge.isLegalMovement(6,3,"L"));
+        assertFalse(judge.isLegalMovement(6,3,"L",true));
         gameBoard.moveUp(4,3); // rat is not in the jump over path
-        assertTrue(judge.isLegalMovement(6,3,"L"));
+        assertTrue(judge.isLegalMovement(6,3,"L",true));
 
         // Test for when the Rat move from the Water to the Land
         // while another Rat is in front of it.
@@ -81,10 +81,10 @@ class JudgeTest {
         gameBoard.moveRight(0,4);
         gameBoard.moveRight(1,4);
         gameBoard.moveRight(2,4);
-        assertFalse(judge.isLegalMovement(3,4,"R"));
-        assertFalse(judge.isLegalMovement(4,4,"L"));
+        assertFalse(judge.isLegalMovement(3,4,"R",true));
+        assertFalse(judge.isLegalMovement(4,4,"L",true));
         gameBoard.moveDown(4,4);
-        assertTrue(judge.isLegalMovement(3,4,"R"));
+        assertTrue(judge.isLegalMovement(3,4,"R",false));
     }
 
     @Test

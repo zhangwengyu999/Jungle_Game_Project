@@ -6,7 +6,7 @@ public class MenuPage {
         String str = "Welcome to the Jungle Game!\n" +
                 "Please select an option [x]:\n" +
                 "[S] Start a new game\n" +
-                "[L] Load a game\n"+
+                "[Q] Quit thw game\n"+
                 "Your option is: ";
         System.out.println(str);
     }

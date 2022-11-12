@@ -9,6 +9,8 @@ import view.Window;
 import java.util.List;
 import java.util.Random;
 
+import static view.InputBox.inputBoxForPlayerAName;
+
 public class GameController {
     private Window gameWindow;
     private GameBoard gameBoard;
@@ -16,13 +18,13 @@ public class GameController {
     private boolean isPlayerARound;
     private String playerAName;
     private String playerBName;
-    private KeyboardListener keyboardListener;
     private ModelController modelController;
 
     public GameController(){
         gameBoard = GameBoard.getGameBoard();
         gameJudge = Judge.getGameJudge(gameBoard);
         gameWindow = new Window();
+        modelController = new ModelController();
         isPlayerARound = randomInitialRound();
         playerAName = "Player A";
         playerBName = "Player B";
@@ -50,7 +52,7 @@ public class GameController {
         boolean start = false;
         String option = KeyboardListener.getNormalInput();
         while(!start){
-            if(option.equals("S")||option.equals("L")){
+            if(option.equals("S")||option.equals("Q")){
                 start = true;
             }
             else{
@@ -61,17 +63,31 @@ public class GameController {
         if (option.equals("S")){
             InfoBox.startGameInfo();
             gameBoard.resetGameBoard();
+
+            // Ask for player names
+            InputBox.inputBoxForPlayerAName();
+            playerAName = KeyboardListener.getNormalInput();
+            InputBox.inputBoxForPlayerBName();
+            playerBName = KeyboardListener.getNormalInput();
+
+            // Randomly start from player A or B
             InfoBox.startRoundInfo();
+
             if (isPlayerARound){
-                System.out.print("A");
+                System.out.print(playerAName);
+                gameProcess();
             }
             else{
-                System.out.print("B");
+                System.out.print(playerBName);
+                gameProcess();
             }
+        }
+        else {
+            System.exit(0);
         }
     }
 
-    public void gameEnd() {
+    public void gameProcess() {
         InputBox.pickAndMovePiece();
         String move = KeyboardListener.getPickAndMove();
         if (move!=null) {
@@ -79,16 +95,21 @@ public class GameController {
             int x = Integer.parseInt(moveArr[0]);
             int y = Integer.parseInt(moveArr[1]);
             String d = moveArr[2];
-            if (gameJudge.isLegalMovement(x, y, d)) {
+            if (gameJudge.isLegalMovement(x, y, d, isPlayerARound)) {
                modelController.playerMovePiece(x, y, d);
-            } else {
-                gameEnd();
+               toggleRound();
+
+
             }
         }
         else{
-            gameEnd();
+
 
         }
+    }
+
+    public void printGameBoard(){
+        gameWindow.showGameBoard(modelController.getUpdateToGameBoard());
     }
 
 //        if (gameJudge.isLegalMovement(move)) {
@@ -106,8 +127,7 @@ public class GameController {
 
     public static void main(String[] args) {
         GameController gameController = new GameController();
-//        gameController.gameStart();
-        gameController.gameEnd();
+        gameController.gameStart();
     }
 
 
