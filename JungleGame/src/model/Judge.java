@@ -4,13 +4,10 @@ import java.util.HashMap;
 
 public class Judge {
 
-    private final int LEGAL_MOVE_STEP = 1;
     private static GameBoard gameBoard;
     private static final Judge gameJudge = new Judge();
 
-    private Judge() {
-//        gameBoard = GameBoard.getGameBoard();
-    }
+    private Judge() {}
 
     public static Judge getGameJudge(GameBoard inGameBoard) {
         gameBoard = inGameBoard;
@@ -81,8 +78,7 @@ public class Judge {
         if (gameBoard.getPieceFromXY(inX, inY).getRank() != 1 &&
                 gameBoard.getPieceFromXY(inX, inY).getRank() != 6 &&
                 gameBoard.getPieceFromXY(inX, inY).getRank() != 7 && inDirection.equals("L")) {
-            if ((inX == 3 && inY == 5) || (inX == 3 && inY == 4) || (inX == 3 && inY == 3)
-                    || (inX == 6 && inY == 5) || (inX == 6 && inY == 4) || (inX == 6 && inY == 3)) {
+            if ((inX == 3 && inY == 5) || (inX == 3 && inY == 4) || (inX == 3 && inY == 3) || (inX == 6 && inY == 5) || (inX == 6 && inY == 4) || (inX == 6 && inY == 3)) {
                 return false;
             }
         }
@@ -102,8 +98,8 @@ public class Judge {
         // move up with rat in the middle of river
         if (gameBoard.getPieceFromXY(inX, inY).getRank() == 6
                 || gameBoard.getPieceFromXY(inX, inY).getRank() == 7) {
-            if (((inX == 1 && inY == 3) || (inX == 2 && inY == 3)
-                    || (inX == 4 && inY == 3) || (inX == 5 && inY == 3))
+            if (((inX == 1 && inY == 2) || (inX == 2 && inY == 2)
+                    || (inX == 4 && inY == 2) || (inX == 5 && inY == 2))
                     && inDirection.equals("U")) {
                 for (int m = 1; m <= 3; m++) {
                     if (gameBoard.getPieceFromXY(inX, inY + m) != null) {
@@ -277,27 +273,6 @@ public class Judge {
         return false;
     }
 
-
-//    public void whoWins(Piece inPiece){
-//        if (isWin(inPiece)) {
-//            if (inPiece.getIsBelongToPlayerA()) {
-//                if (inPiece.isAlive()) {
-//                    System.out.println("A is winner!");
-//                }
-//                else{
-//                    System.out.println("B is winner!");
-//                }
-//            }
-//            else{
-//                if (inPiece.isAlive()){
-//                    System.out.println("B is winner!");
-//                }
-//                else{
-//                    System.out.println("A is winner!");
-//                }
-//            }
-//        }
-//    }
 }
 
 

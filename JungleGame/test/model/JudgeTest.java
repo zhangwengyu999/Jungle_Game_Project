@@ -47,6 +47,131 @@ class JudgeTest {
 
         assertTrue(judge.isLegalMovement(0,8,"D",false));
         assertTrue(judge.isLegalMovement(0,8,"R",false));
+        //new test for A in his den
+        gameBoard.moveLeft(6,0);
+        gameBoard.moveLeft(5,0);
+        assertFalse(judge.isLegalMovement(4,0,"L",true));
+        assertTrue(judge.isLegalMovement(4,0,"R",true));
+        gameBoard.moveRight(4,0);
+        gameBoard.moveRight(5,0);
+
+        //new test for A in his den at 3,1
+        gameBoard.moveRight(2,2);
+        gameBoard.moveDown(3,2);
+        assertFalse(judge.isLegalMovement(3,1,"D",true));
+        assertTrue(judge.isLegalMovement(3,1,"U",true));
+        gameBoard.moveUp(3,1);
+        gameBoard.moveLeft(3,2);
+
+        //new test for B in his den at 2,8
+        gameBoard.moveRight(0,8);
+        gameBoard.moveRight(1,8);
+        assertFalse(judge.isLegalMovement(2,8,"U",false));
+        assertTrue(judge.isLegalMovement(2,8,"L",false));
+        gameBoard.moveLeft(2,8);
+        gameBoard.moveLeft(1,8);
+
+        //new test for B in his den at 3,7
+        gameBoard.moveUp(2,6);
+        gameBoard.moveRight(2,7);
+        assertFalse(judge.isLegalMovement(3,7,"U",false));
+        assertTrue(judge.isLegalMovement(3,7,"D",false));
+        gameBoard.moveLeft(3,7);
+        gameBoard.moveDown(2,7);
+
+        //new test for move down with rat in the middle of river
+        gameBoard.moveDown(0,6);
+        gameBoard.moveRight(0,5);
+        gameBoard.moveDown(0,8);
+        gameBoard.moveDown(0,7);
+        gameBoard.moveRight(0,6);
+        assertFalse(judge.isLegalMovement(1,6,"D",false));
+        gameBoard.moveLeft(1,6);
+        gameBoard.moveUp(0,6);
+        gameBoard.moveUp(0,7);
+        gameBoard.moveLeft(1,5);
+        gameBoard.moveUp(0,5);
+
+        //new test for move up with rat in the middle of river
+        gameBoard.moveUp(6,2);
+        gameBoard.moveLeft(6,3);
+        gameBoard.moveUp(6,0);
+        gameBoard.moveUp(6,1);
+        gameBoard.moveLeft(6,2);
+        assertFalse(judge.isLegalMovement(5,2,"U",true));
+        gameBoard.moveRight(5,2);
+        gameBoard.moveDown(6,2);
+        gameBoard.moveDown(6,1);
+        gameBoard.moveRight(5,3);
+        gameBoard.moveDown(6,3);
+
+        //new test for move left with rat in the middle of river
+        gameBoard.moveDown(4,2);
+        gameBoard.moveUp(6,2);
+        gameBoard.moveLeft(6,3);
+        gameBoard.moveUp(6,0);
+        gameBoard.moveUp(6,1);
+        gameBoard.moveLeft(6,2);
+        gameBoard.moveLeft(5,2);
+        gameBoard.moveLeft(4,2);
+        gameBoard.moveUp(3,2);
+        assertFalse(judge.isLegalMovement(3,3,"R",true));
+        gameBoard.moveDown(3,3);
+        gameBoard.moveRight(3,2);
+        gameBoard.moveRight(4,2);
+        gameBoard.moveRight(5,2);
+        gameBoard.moveDown(6,2);
+        gameBoard.moveDown(6,1);
+        gameBoard.moveRight(5,3);
+        gameBoard.moveDown(6,3);
+        gameBoard.moveUp(4,1);
+
+        //new test for rat move up from water to land
+        gameBoard.moveDown(0,6);
+        gameBoard.moveRight(0,5);
+        assertTrue(judge.isLegalMovement(1,5,"U",false));
+        gameBoard.moveLeft(2,6);
+        assertFalse(judge.isLegalMovement(1,5,"U",false));
+        gameBoard.moveRight(1,6);
+        gameBoard.moveUp(1,5);
+        gameBoard.moveLeft(1,6);
+        gameBoard.moveLeft(6,2);
+        assertTrue(judge.isLegalMovement(5,2,"U",true));
+        gameBoard.moveRight(5,2);
+
+        //new test for rat move down from water to land
+        gameBoard.moveUp(6,2);
+        gameBoard.moveLeft(6,3);
+        assertTrue(judge.isLegalMovement(5,3,"D",true));
+        gameBoard.moveUp(5,1);
+        assertFalse(judge.isLegalMovement(5,3,"D",true));
+        gameBoard.moveDown(5,2);
+        gameBoard.moveRight(5,3);
+        gameBoard.moveDown(6,3);
+
+
+        //new test for not rat move down into water
+//        gameBoard.moveRight(0,6);
+//        assertTrue(judge.isLegalMovement(1,6,"D",false));
+//        assertFalse(judge.isLegalMovement(2,6,"D",false));
+//        gameBoard.moveLeft(1,6);
+
+        //new test for not rat move left into water
+//        gameBoard.moveUp(6,2);
+//        assertTrue(judge.isLegalMovement(6,3,"L",true));
+//        gameBoard.moveDown(6,3);
+//        gameBoard.moveDown(6,6);
+//        assertFalse(judge.isLegalMovement(6,5,"L",false));
+//        gameBoard.moveUp(6,5);
+
+        //new test for not rat move right into water
+        gameBoard.moveDown(0,6);
+        assertTrue(judge.isLegalMovement(0,5,"R",false));
+        gameBoard.moveUp(0,5);
+        gameBoard.moveUp(0,2);
+        assertFalse(judge.isLegalMovement(0,3,"R",true));
+        gameBoard.moveDown(0,3);
+
 
         // Test for move to the own Den
         gameBoard.moveRight(0,0);
@@ -59,6 +184,15 @@ class JudgeTest {
         //      Test for legal Rat moves into Water
         gameBoard.moveUp(6,2);
         assertTrue(judge.isLegalMovement(6,3,"L",true));
+        //new test for not rat move left into water
+        gameBoard.moveLeft(4,2);
+        gameBoard.moveUp(3,2);
+        assertFalse(judge.isLegalMovement(3,3,"L",true));
+        gameBoard.moveDown(3,3);
+        gameBoard.moveRight(2,3);
+
+        //new test for not rat move down into water
+        assertFalse(judge.isLegalMovement(4,6,"D",false));
 
         // No piece to select
         assertFalse(judge.isLegalMovement(1,0,"U",true));
