@@ -56,7 +56,7 @@ public class GameController {
         boolean start = false;
         String option = KeyboardListener.getNormalInput();
         while(!start){
-            if(option.equals("S")||option.equals("Q")){
+            if(option.equalsIgnoreCase("S")||option.equalsIgnoreCase("Q")){
                 start = true;
             }
             else{
@@ -64,7 +64,7 @@ public class GameController {
                 option = KeyboardListener.getNormalInput();
             }
         }
-        if (option.equals("S")){
+        if (option.equalsIgnoreCase("S")){
             InfoBox.startGameInfo();
             gameBoard.resetGameBoard();
 
