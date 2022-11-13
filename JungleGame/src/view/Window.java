@@ -65,7 +65,11 @@ public class Window {
                         String temp = rowNum+" ";
                         rowNum--;
                         System.out.print(temp+""+this.gameBoardPixels[i][j]);
-                    }else {
+                    }
+                    else if(i==44){
+                        System.out.print("Y "+this.gameBoardPixels[i][j]);
+                    }
+                    else {
                         System.out.print("  "+this.gameBoardPixels[i][j]);
                     }
                 }
@@ -75,7 +79,7 @@ public class Window {
             }
             System.out.println();
         }
-        String str = "        1           2           3           4           5           6           7     ";
+        String str = "  X     1           2           3           4           5           6           7     ";
         System.out.println(str);
     }
 
@@ -89,8 +93,6 @@ public class Window {
                     else {temp = new Square(j, i, type, content);}
                     this.addSquareToGameBoard(temp);
             }
-
-            System.out.println();
         }
     }
 
@@ -111,20 +113,20 @@ public class Window {
     }
 
 
-    public static void main(String[] args) {
-        Window window = new Window();
-        String[][] expectedOriginal = new String[][]{
-                {"LB","","","","","","TB"},
-                {"","DB","","","","CB",""},
-                {"RB","","PB","","WB","","EB"},
-                {"","","","","","",""},
-                {"","","","","","",""},
-                {"","","","","","",""},
-                {"EA","","WA","","PA","","RA"},
-                {"","CA","","","","DA",""},
-                {"TA","","","","","","LA"}
-        };
-        window.showGameBoard(expectedOriginal);
-    }
+//    public static void main(String[] args) {
+//        Window window = new Window();
+//        String[][] expectedOriginal = new String[][]{
+//                {"LB","","","","","","TB"},
+//                {"","DB","","","","CB",""},
+//                {"RB","","PB","","WB","","EB"},
+//                {"","","","","","",""},
+//                {"","","","","","",""},
+//                {"","","","","","",""},
+//                {"EA","","WA","","PA","","RA"},
+//                {"","CA","","","","DA",""},
+//                {"TA","","","","","","LA"}
+//        };
+//        window.showGameBoard(expectedOriginal);
+//    }
 
 }

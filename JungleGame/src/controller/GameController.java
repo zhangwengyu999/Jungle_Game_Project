@@ -65,19 +65,17 @@ public class GameController {
             }
         }
         if (option.equalsIgnoreCase("S")){
-            InfoBox.startGameInfo();
-            gameBoard.resetGameBoard();
-
             // Ask for player names
             InputBox.inputBoxForPlayerAName();
             playerAName = KeyboardListener.getNormalInput();
             InputBox.inputBoxForPlayerBName();
             playerBName = KeyboardListener.getNormalInput();
-
+            InfoBox.startGameInfo();
+            gameBoard.resetGameBoard();
             // Randomly start from player A or B
-            InfoBox.startRoundInfo();
             printGameBoard();
-            System.out.println("The Game Start randomly from " + (isPlayerARound ? playerAName : playerBName));
+            InfoBox.mapRepresents();
+            System.out.println("---------------------The Game Start randomly from: " + (isPlayerARound ? "PlayerA "+"["+playerAName+"]" : "PlayerB "+"<"+playerBName+">")+"---------------------");
             gameProcess();
         }
         else {
@@ -101,7 +99,9 @@ public class GameController {
                if (!gameJudge.isAWin(gameBoard.getPieceAfterMovement(desX, desY, d))
                        && !gameJudge.isBWin(gameBoard.getPieceAfterMovement(desX, desY, d))) {
                    printGameBoard();
-                   System.out.println("Next round is " + (isPlayerARound ? playerAName : playerBName) + "'s turn.");
+                   System.out.println("Next round is the turn of " + (isPlayerARound ? "PlayerA "+"["+playerAName+"]" : "PlayerB "+"<"+playerBName+">"));
+                   System.out.println("Remaining pieces of A is : "+gameBoard.getAlivePieceOfPlayerA());
+                   System.out.println("Remaining pieces of B is : "+gameBoard.getAlivePieceOfPlayerB());
                    gameProcess();
                }
                else {
