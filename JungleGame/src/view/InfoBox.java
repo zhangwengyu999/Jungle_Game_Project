@@ -34,7 +34,7 @@ public class InfoBox {
 
     public static void mapRepresents(){
         System.out.println("                           -----------------------------------");
-        System.out.println("                           -    Map represents for pieces:   -");
+        System.out.println("                           -     Abbreviation for pieces:    -");
         System.out.println("                           -        E(Rank 8): Elephant      -");
         System.out.println("                           -        L(Rank 7): Lion          -");
         System.out.println("                           -        T(Rank 6): Tiger         -");
@@ -45,6 +45,12 @@ public class InfoBox {
         System.out.println("                           -        R(Rank 1): Rat           -");
         System.out.println("                           -     Piece A & [ ]: PlayerA's    -");
         System.out.println("                           -     Piece B & < >: PlayerB's    -");
+        System.out.println("                           -----------------------------------");
+        System.out.println("                           -        Symbol for Squares:      -");
+        System.out.println("                           -       '---': General Land       -");
+        System.out.println("                           -       '$$$': Den Land           -");
+        System.out.println("                           -       '###': Trap Land          -");
+        System.out.println("                           -       '@@@': Water Area         -");
         System.out.println("                           -----------------------------------\n");
 
     }
