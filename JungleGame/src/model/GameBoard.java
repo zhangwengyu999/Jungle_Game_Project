@@ -24,6 +24,8 @@ public class GameBoard {
 
     public void resetGameBoard(){
         gameBoard = new GameBoard();
+        initializePieces();
+        initializeAlivePieceOfPlayer();
     }
 
     /**
@@ -165,7 +167,7 @@ public class GameBoard {
                 return pieces[inX-1][inY];
             }
             else if(direction.equals("R")){
-                return pieces[inX][inY+1];
+                return pieces[inX+1][inY];
             }
             else{
                 return null;
@@ -329,6 +331,11 @@ public class GameBoard {
     // new
     public int getAlivePieceOfPlayerB() {
         return alivePieceOfPlayerB;
+    }
+
+    private void initializeAlivePieceOfPlayer(){
+        alivePieceOfPlayerA = 8;
+        alivePieceOfPlayerB = 8;
     }
 
     public String[][] getUpdate() {

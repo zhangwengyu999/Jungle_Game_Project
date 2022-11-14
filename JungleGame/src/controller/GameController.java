@@ -113,7 +113,6 @@ public class GameController {
                    } else {
                        System.out.print(playerBName+"\n");
                    }
-                   gameBoard.resetGameBoard();
                    gameStart();
                }
             }

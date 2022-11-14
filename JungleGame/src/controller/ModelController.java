@@ -47,18 +47,16 @@ public class ModelController {
                 return false;
             }
         }
-        if (inDirection.equals("U")) {
-            gameBoard.setPiecesDeath(inX, gameBoard.getMoveUpDestination(inX, inY)[1]);
-            gameBoard.moveUp(inX, inY);
-        } else if (inDirection.equals("D")) {
-            gameBoard.setPiecesDeath(inX, gameBoard.getMoveDownDestination(inX, inY)[1]);
-            gameBoard.moveDown(inX, inY);
-        } else if (inDirection.equals("L")) {
-            gameBoard.setPiecesDeath(gameBoard.getMoveLeftDestination(inX, inY)[0], inY);
-            gameBoard.moveLeft(inX, inY);
-        } else if (inDirection.equals("R")) {
-            gameBoard.setPiecesDeath(gameBoard.getMoveRightDestination(inX, inY)[0], inY);
-            gameBoard.moveRight(inX, inY);
+        else{
+            if (inDirection.equals("U")) {
+                gameBoard.moveUp(inX, inY);
+            } else if (inDirection.equals("D")) {
+                gameBoard.moveDown(inX, inY);
+            } else if (inDirection.equals("L")) {
+                gameBoard.moveLeft(inX, inY);
+            } else if (inDirection.equals("R")) {
+                gameBoard.moveRight(inX, inY);
+            }
         }
         return true;
     }
