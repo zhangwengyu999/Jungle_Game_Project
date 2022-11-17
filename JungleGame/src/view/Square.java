@@ -1,5 +1,8 @@
 package view;
 
+/**
+ * This class is used to show the view of square and piece of the game board.
+ */
 public class Square {
     private int x;
     private int y;
@@ -9,7 +12,13 @@ public class Square {
     private String pieceContent;
     private String blockFrame;
 
-
+    /**
+     * Constructor of Square class
+     * @param inX x coordinate of the square
+     * @param inY y coordinate of the square
+     * @param inType type of the square
+     * @param inContent the display content of the square
+     */
     public Square(int inX, int inY, String inType, String inContent) {
         x = inX;
         y = inY;
@@ -28,6 +37,9 @@ public class Square {
         }
     }
 
+    /**
+     * Set the square view as the den square with '$'
+     */
     public void setAsDenFrame() {
         blockFrame =
                     "+$$$$$$$$$$+\n" +
@@ -38,6 +50,9 @@ public class Square {
 
     }
 
+    /**
+     * Set the square view as the trap square with '#'
+     */
     public void setAsTrapFrame(){
         blockFrame =
                     "+#-#-##-#-#+\n" +
@@ -48,6 +63,9 @@ public class Square {
 
     }
 
+    /**
+     * Set the square view as the river square with '@'
+     */
     public void setAsRiverFrame(){
         blockFrame =
                     "+@@@@@@@@@@+\n" +
@@ -58,6 +76,9 @@ public class Square {
 
     }
 
+    /**
+     * Set the square view as the general land square with '-'
+     */
     public void setAsGeneralLandFrame(){
         blockFrame =
                     "+----------+\n" +
@@ -67,6 +88,9 @@ public class Square {
                     "+----------+";
     }
 
+    /**
+     * Render the square boundary and content into the 2-D char array (pixels)
+     */
     private void render() {
         this.pixels = new char[this.height][this.width];
         int heightPointer = 0;
@@ -90,7 +114,6 @@ public class Square {
                         this.pixels[2][4] = '<';
                         this.pixels[2][7] = '>';
                     }
-
                 }
                 widthPointer++;
             } else {
@@ -100,28 +123,44 @@ public class Square {
         }
     }
 
+    /**
+     * Get the x coordinate of the square
+     * @return x coordinate of the square
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Get the y coordinate of the square
+     * @return y coordinate of the square
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Get the width of the square
+     * @return width of the square
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Get the height of the square
+     * @return height of the square
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * First render and get the 2-D char array of the square as pixels
+     * @return
+     */
     public char[][] getPixels() {
         render();
         return this.pixels;
-    }
-
-    public char getPiece(){
-        return '$';
     }
 }

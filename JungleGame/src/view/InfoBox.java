@@ -1,5 +1,8 @@
 package view;
 
+/**
+ * This class is used to show the information box.
+ */
 public class InfoBox {
 
     public static void startGameInfo() {

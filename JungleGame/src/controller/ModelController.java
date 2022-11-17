@@ -2,7 +2,6 @@ package controller;
 
 import model.GameBoard;
 import model.Judge;
-import view.Window;
 
 public class ModelController {
 

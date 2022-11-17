@@ -1,10 +1,9 @@
 package view;
 
+/**
+ * This class is used to show the input hits.
+ */
 public class InputBox{
-     public static void showInputBox() {
-        //...
-    }
-
     public static void inputBoxForPlayerAName() {
         String str = "Please input Player A's name: ";
         System.out.print(str);

@@ -4,9 +4,7 @@ import model.GameBoard;
 import model.Judge;
 import view.InfoBox;
 import view.InputBox;
-import view.MenuPage;
 import view.Window;
-import java.util.List;
 import java.util.Random;
 
 public class GameController {

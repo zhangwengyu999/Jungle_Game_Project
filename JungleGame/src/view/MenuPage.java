@@ -1,5 +1,8 @@
 package view;
 
+/**
+ * This class is used to show the menu page and game logo
+ */
 public class MenuPage {
 
     public static void showMenuPage() {

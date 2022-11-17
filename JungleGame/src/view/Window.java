@@ -1,7 +1,8 @@
 package view;
 
-import model.GameBoard;
-
+/**
+ * This class is used to show entire view window of the game.
+ */
 public class Window {
     private static final int width = 84; // 7 * 12 = 84
     private static final int height = 45; // 9 * 5 = 45
