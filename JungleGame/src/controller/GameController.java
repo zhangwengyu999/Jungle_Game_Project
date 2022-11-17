@@ -48,7 +48,8 @@ public class GameController {
         return rand.nextBoolean();
     }
     public void welcome(){
-        System.out.println("Welcome to the Jungle Game!\n");
+        gameWindow.showJGLogo();
+        System.out.println("Welcome to the JG Game!\n");
         gameStart();
     }
     public void gameStart(){
@@ -146,7 +147,7 @@ public class GameController {
 
     public static void main(String[] args) {
         GameController gameController = new GameController();
-        gameController.gameStart();
+        gameController.welcome();
     }
 
 

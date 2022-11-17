@@ -23,6 +23,12 @@ public class Window {
         menuPage.showMenuPage();
     }
 
+    public void showJGLogo(){
+        menuPage.jgGameLogo();
+    }
+
+
+
     public void showInfoBoxWindow(){
         // infoBox.showInfo();
     }
