@@ -171,7 +171,6 @@ public class GameBoard {
         return pieces[inX][inY];
     }
 
-    // new !!
     /**
      * Get the piece at a position after a movement
      * @param inX the x coordinate of the position
@@ -212,7 +211,6 @@ public class GameBoard {
         return squares[inX][inY];
     }
 
-    // new !!
     /**
      * Move a piece to a new position
      * @param fromX the x coordinate of the original position
@@ -226,7 +224,6 @@ public class GameBoard {
         pieces[toX][toY].setPositionType(squares[toX][toY].getSquareType());
     }
 
-    // new 2022.11.10
     /**
      * Get the destination after move up(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
@@ -256,7 +253,6 @@ public class GameBoard {
         }
     }
 
-    // new 2022.11.10
     /**
      * Get the destination after move down(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
@@ -286,7 +282,6 @@ public class GameBoard {
         }
     }
 
-    // new 2022.11.10
     /**
      * Get the destination after move left (but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
@@ -317,7 +312,6 @@ public class GameBoard {
         }
     }
 
-    // new 2022.11.10
     /**
      * Get the destination after move right(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
@@ -347,7 +341,6 @@ public class GameBoard {
         }
     }
 
-    // new+new 2022.11.03
     /**
     The function of capture was deleted. In model, we did not make judgment, but only set the survival state of chess pieces.
     Therefore, we directly set a function to set the death, and left the judgment to the controller.
@@ -381,7 +374,6 @@ public class GameBoard {
         return alivePieceOfPlayerB;
     }
 
-    // new
     /**
      * Initialize the number of alive pieces of player A and player B
      */

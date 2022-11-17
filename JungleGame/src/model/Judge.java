@@ -12,7 +12,6 @@ public class Judge {
      */
     private Judge() {}
 
-    // new!!
     /**
      * Get the only instance of Judge based on the given game board
      * @param inGameBoard the game board to be judged
@@ -270,7 +269,6 @@ public class Judge {
      * @param inPiece the piece that is alive after the move
      * @return true if the game is over and Player A is win, false if the game is not over
      */
-    // new!!
     public boolean isAWin(Piece inPiece) {
         if (inPiece != null) {
             if (inPiece.getPositionType().equals("den")) {
@@ -291,7 +289,6 @@ public class Judge {
      * @param inPiece the piece that is alive after the move
      * @return true if the game is over and Player B is win, false if the game is not over
      */
-    // new!!
     public boolean isBWin(Piece inPiece) {
         if (inPiece != null) {
             if (inPiece.getPositionType().equals("den")) {
