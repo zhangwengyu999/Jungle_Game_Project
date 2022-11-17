@@ -7,14 +7,32 @@ public class Judge {
     private static GameBoard gameBoard;
     private static final Judge gameJudge = new Judge();
 
+    /**
+     * Private constructor for Singleton pattern
+     * Ensure that only one instance of Judge can be created
+     * Meaning only one game judge can be applied at a time
+     */
     private Judge() {}
 
+    // new!!
+    /**
+     * Get the only instance of Judge based on the given game board
+     * @param inGameBoard the game board to be judged
+     * @return the only instance of Judge
+     */
     public static Judge getGameJudge(GameBoard inGameBoard) {
         gameBoard = inGameBoard;
         return gameJudge;
     }
 
-    // new
+    /**
+     * Judge whether the desired move will be legal or not in several aspects
+     * @param inX x coordinate of Piece
+     * @param inY y coordinate of Piece
+     * @param inDirection direction of movement
+     * @param isPlayerARound true for player A's round; false for player B's round
+     * @return true for will be legal movement; false for will be illegal movement
+     */
     public boolean isLegalMovement(int inX, int inY, String inDirection, boolean isPlayerARound) {
 
         // No piece to select
@@ -203,7 +221,13 @@ public class Judge {
         return true;
     }
 
-    // new
+    /**
+     * Judge whether the active piece will be alive or not after the move
+     * @param aIntX the x coordinate of the active piece
+     * @param aIntY the y coordinate of the active piece
+     * @param inDirection the direction of the move
+     * @return true if the active piece will be alive after the move, false will be dead
+     */
     public boolean isAAliveAfterCapture(int aIntX, int aIntY, String inDirection) {
         Piece pieceFrom = gameBoard.getPieceFromXY(aIntX, aIntY);
         int toX=-1;
@@ -243,6 +267,12 @@ public class Judge {
         return true;
     }
 
+    /**
+     * Judge whether the game is over or not and Player A is win or not
+     * @param inPiece the piece that is alive after the move
+     * @return true if the game is over and Player A is win, false if the game is not over
+     */
+    // new!!
     public boolean isAWin(Piece inPiece) {
         if (inPiece != null) {
             if (inPiece.getPositionType().equals("den")) {
@@ -258,6 +288,12 @@ public class Judge {
         return false;
     }
 
+    /**
+     * Judge whether the game is over or not and Player B is win or not
+     * @param inPiece the piece that is alive after the move
+     * @return true if the game is over and Player B is win, false if the game is not over
+     */
+    // new!!
     public boolean isBWin(Piece inPiece) {
         if (inPiece != null) {
             if (inPiece.getPositionType().equals("den")) {
@@ -272,7 +308,4 @@ public class Judge {
         }
         return false;
     }
-
 }
-
-

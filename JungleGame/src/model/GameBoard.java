@@ -9,6 +9,11 @@ public class GameBoard {
     private int alivePieceOfPlayerB;
     private static GameBoard gameBoard = new GameBoard();
 
+    /**
+     * Private constructor for Singleton Pattern
+     * Ensure that only one instance of GameBoard can be created
+     * Meaning only one GameBoard can be played at a time
+     */
     private GameBoard(){
         WIDTH = 7;
         HEIGHT = 9;
@@ -18,10 +23,18 @@ public class GameBoard {
         initializePieces();
     }
 
+    /**
+     * Get the only instance of GameBoard
+     * @return the instance of GameBoard
+     */
     public static GameBoard getGameBoard(){
         return gameBoard;
     }
 
+    // new!!
+    /**
+     * Reset the GameBoard to a new instance for a new game
+     */
     public void resetGameBoard(){
         gameBoard = new GameBoard();
         initializePieces();
@@ -145,6 +158,12 @@ public class GameBoard {
         return pieces;
     }
 
+    /**
+     * Get the piece at the given position
+     * @param inX the x coordinate of the position
+     * @param inY the y coordinate of the position
+     * @return the Piece at the given position
+     */
     public Piece getPieceFromXY(int inX, int inY) {
         if (inX < 0 || inX >= WIDTH || inY < 0 || inY >= HEIGHT) {
             return null;
@@ -152,6 +171,14 @@ public class GameBoard {
         return pieces[inX][inY];
     }
 
+    // new !!
+    /**
+     * Get the piece at a position after a movement
+     * @param inX the x coordinate of the position
+     * @param inY the y coordinate of the position
+     * @param direction the direction of the movement
+     * @return the piece at a position after the movement
+     */
     public Piece getPieceAfterMovement(int inX, int inY, String direction) {
         if (inX < 0 || inX >= WIDTH || inY < 0 || inY >= HEIGHT) {
             return null;
@@ -175,19 +202,32 @@ public class GameBoard {
         }
     }
 
-    // new
+    /**
+     * Get the square at the given position
+     * @param inX the x coordinate of the position
+     * @param inY the y coordinate of the position
+     * @return the Square at the given position
+     */
     public Square getSquareFromXY(int inX, int inY) {
         return squares[inX][inY];
     }
 
-    // new
+    // new !!
+    /**
+     * Move a piece to a new position
+     * @param fromX the x coordinate of the original position
+     * @param fromY the y coordinate of the original position
+     * @param toX the x coordinate of the new position
+     * @param toY the y coordinate of the new position
+     */
     public void movePieceToXY(int fromX, int fromY, int toX, int toY) {
         pieces[toX][toY] = pieces[fromX][fromY];
         pieces[fromX][fromY] = null;
         pieces[toX][toY].setPositionType(squares[toX][toY].getSquareType());
     }
 
-    /** new 2022.11.10
+    // new 2022.11.10
+    /**
      * Get the destination after move up(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
      * @return int[] the destination coordinate of the piece
@@ -216,8 +256,8 @@ public class GameBoard {
         }
     }
 
-
-    /** new 2022.11.10
+    // new 2022.11.10
+    /**
      * Get the destination after move down(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
      * @return int[] the destination coordinate of the piece
@@ -246,7 +286,8 @@ public class GameBoard {
         }
     }
 
-    /** new 2022.11.10
+    // new 2022.11.10
+    /**
      * Get the destination after move left (but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
      * @return int[] the destination coordinate of the piece
@@ -276,7 +317,8 @@ public class GameBoard {
         }
     }
 
-    /** new 2022.11.10
+    // new 2022.11.10
+    /**
      * Get the destination after move right(but no movement happened) a piece at (inX, inY), Lion and Tiger can jump over the water
      * @param inX, inY: a piece at (inX, inY)
      * @return int[] the destination coordinate of the piece
@@ -323,21 +365,35 @@ public class GameBoard {
         }
     }
 
-    // new
+    /**
+     * Get the number of alive pieces of player A
+     * @return
+     */
     public int getAlivePieceOfPlayerA() {
         return alivePieceOfPlayerA;
     }
 
-    // new
+    /**
+     * Get the number of alive pieces of player B
+     * @return
+     */
     public int getAlivePieceOfPlayerB() {
         return alivePieceOfPlayerB;
     }
 
+    // new
+    /**
+     * Initialize the number of alive pieces of player A and player B
+     */
     private void initializeAlivePieceOfPlayer(){
         alivePieceOfPlayerA = 8;
         alivePieceOfPlayerB = 8;
     }
 
+    /**
+     * Get the updated GameBoard in 2-D String array of Pieces and Squares
+     * @return
+     */
     public String[][] getUpdate() {
         String[][] out = new String[HEIGHT][WIDTH];
         for (int h = 0;h<=8;h++){

@@ -8,14 +8,11 @@ public class ModelController {
 
     private GameBoard gameBoard;
     private Judge gameJudge;
-    private final int MOVE_STEP = 1;
 
     public ModelController() {
         gameBoard = GameBoard.getGameBoard();
         gameJudge = Judge.getGameJudge(gameBoard);
     }
-
-    // 调用时还需要合法性移动判断
 
     /**
      * Process user move cmd
@@ -59,10 +56,6 @@ public class ModelController {
             }
         }
         return true;
-    }
-
-    public void resetGame() {
-        gameBoard.resetGameBoard();
     }
 
     public String[][] getUpdateToGameBoard() {
