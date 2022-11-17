@@ -6,11 +6,8 @@ import view.InfoBox;
 import view.InputBox;
 import view.MenuPage;
 import view.Window;
-
 import java.util.List;
 import java.util.Random;
-
-import static view.InputBox.inputBoxForPlayerAName;
 
 public class GameController {
     private Window gameWindow;
@@ -21,6 +18,9 @@ public class GameController {
     private String playerBName;
     private ModelController modelController;
 
+    /**
+     * Constructor
+     */
     public GameController(){
         gameBoard = GameBoard.getGameBoard();
         gameJudge = Judge.getGameJudge(gameBoard);
@@ -31,27 +31,34 @@ public class GameController {
         playerBName = "Player B";
     }
 
-    public void setPlayerAName(String inName){
-        playerAName = inName;
-    }
-
-    public void setPlayerBName(String inName){
-        playerBName = inName;
-    }
-
+    /**
+     * Toggle the round between player A and player B
+     */
     private void toggleRound() {
         isPlayerARound = !isPlayerARound;
     }
 
+    /**
+     * Randomly generate the initial round between player A and player B
+     * @return true for player A; false for player B
+     */
     private boolean randomInitialRound(){
         Random rand = new Random();
         return rand.nextBoolean();
     }
+
+    /**
+     * Update the view to the welcome page
+     */
     public void welcome(){
         gameWindow.showJGLogo();
         System.out.println("Welcome to the JG Game!\n");
         gameStart();
     }
+
+    /**
+     * Start the game
+     */
     public void gameStart(){
         gameWindow.showMenuWindow();
         boolean start = false;
@@ -84,6 +91,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Process the game
+     */
     public void gameProcess() {
         InputBox.pickAndMovePiece();
         String move = KeyboardListener.getPickAndMove();
@@ -128,27 +138,18 @@ public class GameController {
         }
     }
 
+    /**
+     * Render the game board to the View
+     */
     public void printGameBoard(){
         gameWindow.showGameBoard(modelController.getUpdateToGameBoard());
     }
 
-//        if (gameJudge.isLegalMovement(move)) {
-//            System.out.print("A");
-//            InfoBox.EndGameInfo();
-//            InfoBox.winnerInfo();
-//        } else {
-//            System.out.print("B");
-//        }
-//    }
-
-
-
-
-
+    /**
+     * Main entrance of the game
+     */
     public static void main(String[] args) {
         GameController gameController = new GameController();
         gameController.welcome();
     }
-
-
 }

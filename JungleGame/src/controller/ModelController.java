@@ -9,6 +9,9 @@ public class ModelController {
     private GameBoard gameBoard;
     private Judge gameJudge;
 
+    /**
+     * Constructor
+     */
     public ModelController() {
         gameBoard = GameBoard.getGameBoard();
         gameJudge = Judge.getGameJudge(gameBoard);
@@ -58,6 +61,10 @@ public class ModelController {
         return true;
     }
 
+    /**
+     * Get the game board update
+     * @return
+     */
     public String[][] getUpdateToGameBoard() {
         return gameBoard.getUpdate();
     }

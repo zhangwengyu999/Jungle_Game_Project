@@ -3,19 +3,13 @@ package view;
 import model.GameBoard;
 
 public class Window {
-    private static final int width = 84; // 7*12 = 84
+    private static final int width = 84; // 7 * 12 = 84
     private static final int height = 45; // 9 * 5 = 45
-    private Square[][] squares;
     private char[][] gameBoardPixels;
-    private InfoBox infoBox;
-    private InputBox inputBox;
     private MenuPage menuPage;
 
     public Window() {
-        squares = new Square[height][width];
         gameBoardPixels = new char[height][width];
-        infoBox = new InfoBox();
-        inputBox = new InputBox();
         menuPage = new MenuPage();
     }
 
@@ -27,29 +21,10 @@ public class Window {
         menuPage.jgGameLogo();
     }
 
-
-
-    public void showInfoBoxWindow(){
-        // infoBox.showInfo();
-    }
-
-    public void showInputBoxWindow(){
-        inputBox.showInputBox();
-    }
-
-    public void updateWindowFromGameBoard(GameBoard inGameBoard) {
-        // ...
-    }
-
-    public void clearWindow(){
-        // ...
-    }
-
     public void showGameBoard(String[][] inStrArr) {
         this.renderFromModel(inStrArr);
         this.renderCanva();
     }
-
 
     private void addSquareToGameBoard(Square square) {
         int x = square.getX();
@@ -117,22 +92,4 @@ public class Window {
             return  "g";
         }
     }
-
-
-//    public static void main(String[] args) {
-//        Window window = new Window();
-//        String[][] expectedOriginal = new String[][]{
-//                {"LB","","","","","","TB"},
-//                {"","DB","","","","CB",""},
-//                {"RB","","PB","","WB","","EB"},
-//                {"","","","","","",""},
-//                {"","","","","","",""},
-//                {"","","","","","",""},
-//                {"EA","","WA","","PA","","RA"},
-//                {"","CA","","","","DA",""},
-//                {"TA","","","","","","LA"}
-//        };
-//        window.showGameBoard(expectedOriginal);
-//    }
-
 }

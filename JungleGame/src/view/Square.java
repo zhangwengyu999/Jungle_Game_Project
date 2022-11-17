@@ -27,11 +27,6 @@ public class Square {
             setAsRiverFrame();
         }
     }
-    public void putPieceOn(String inStr) {
-        pieceContent = inStr;
-    }
-
-
 
     public void setAsDenFrame() {
         blockFrame =
@@ -124,10 +119,6 @@ public class Square {
     public char[][] getPixels() {
         render();
         return this.pixels;
-    }
-
-    public String getBlock(){
-        return "";
     }
 
     public char getPiece(){
