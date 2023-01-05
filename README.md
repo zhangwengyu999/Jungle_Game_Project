@@ -13,18 +13,21 @@
 
 ---
 
+<img src="./img/1.png" width="40%"></img>  
+<img src="./img/3.png" width="40%"></img>
+
+
+---
+
 ## Features
 
-![](./img/2.png)
+<img src="./img/2.png" width="60%"></img>
 
 For detailed features, please refer to [Software Requirements Specification](./Software_Requirements_Specification.pdf).
 
 ---
 
 ## Developer & User Manual
-
-![](./img/1.png)
-![](./img/3.png)
 
 For detailed developer manual, please refer to [Developer Manual](./Developer_Manual.pdf).
 
