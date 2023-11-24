@@ -13,6 +13,10 @@
 
 ---
 
+## Demo
+
+https://github.com/zhangwengyu999/Jungle_Game_Project/assets/68627255/fce05245-7e6a-436e-b41b-f073a9fce2fa
+
 <img src="./img/1.png" width="40%"></img>  
 <img src="./img/3.png" width="40%"></img>
 
